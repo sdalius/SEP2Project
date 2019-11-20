@@ -1,6 +1,7 @@
 package PatientBookingGUI.view;
 
-import PatientBookingGUI.view.login.LoginController;
+import PatientBookingGUI.view.CreateAccount.CreateAccountController;
+import PatientBookingGUI.view.Login.LoginController;
 import PatientBookingGUI.viewmodel.ViewModelFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,6 +33,25 @@ public class ViewHandler {
             e.printStackTrace();
         }
         LoginController controller = loader.getController();
+        controller.init(vmf.getLoginViewModel (), this);
+        mainStage.setTitle("Login View");
+
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
+    }
+
+    public void openCreateAccountView() {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("CreateAccount/createAccount.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        CreateAccountController controller = loader.getController();
         controller.init(vmf.getLoginViewModel (), this);
         mainStage.setTitle("Login View");
 
