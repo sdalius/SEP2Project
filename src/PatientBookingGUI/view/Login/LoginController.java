@@ -13,9 +13,9 @@ public class LoginController {
     private LoginViewModel loginViewModel;
     private ViewHandler viewHandler;
 
-    public void init(LoginViewModel managerView, ViewHandler viewHandler) {
+    public void init(LoginViewModel loginViewModel, ViewHandler viewHandler) {
         this.viewHandler = viewHandler;
-        this.loginViewModel = managerView;
+        this.loginViewModel = loginViewModel;
         }
 
     public void openCreateAccountView(ActionEvent actionEvent) {
