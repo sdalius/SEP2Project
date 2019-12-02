@@ -1,4 +1,6 @@
-package PatientBookingGUI.Database;
+package Database;
+
+import Database.DatabaseAccessObject;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,7 +15,7 @@ public class CreateTable {
     public void createDomains()
     {
         try{
-            stmt = databaseObject.getC().createStatement();
+            stmt = databaseObject.getConnection().createStatement();
             stmt.executeUpdate ( "create domain d_customerid as char(4);" +
                         "create domain d_firstname varchar(10);" +
                         "create domain d_lastname varchar(20);" +
@@ -37,7 +39,7 @@ public class CreateTable {
 
     public void createCustomerTable(String tablename) {
         try{
-            stmt = databaseObject.getC ().createStatement ();
+            stmt = databaseObject.getConnection().createStatement ();
             stmt.executeUpdate("CREATE TABLE \"SkiRental\"." + tablename + "(" +
                     "CustomerID int," +
                     "FirstName d_firstname,\n" +
@@ -59,7 +61,7 @@ public class CreateTable {
     }
     public void createRentalSkiTable(String tablename) {
         try{
-            stmt = databaseObject.getC ().createStatement ();
+            stmt = databaseObject.getConnection().createStatement ();
             stmt.executeUpdate("CREATE TABLE \"SkiRental\"." + tablename + "(" +
                     "    InventoryNO d_invno," +
                     "    Price d_price," +
@@ -81,7 +83,7 @@ public class CreateTable {
 
     public void createStaffTable(String tablename) {
         try{
-            stmt = databaseObject.getC ().createStatement ();
+            stmt = databaseObject.getConnection().createStatement ();
             stmt.executeUpdate("CREATE TABLE \"SkiRental\"." + tablename + "(" +
                     "StaffID d_staffid," +
                     "FirstName d_firstname," +
@@ -105,7 +107,7 @@ public class CreateTable {
 
     public void createBookingTable(String tablename) {
         try{
-            stmt = databaseObject.getC ().createStatement ();
+            stmt = databaseObject.getConnection().createStatement ();
             stmt.executeUpdate("CREATE TABLE \"SkiRental\"." + tablename + "(" +
                     "CustomerID d_customerid," +
                     "InventoryNO d_invno," +
@@ -125,7 +127,7 @@ public class CreateTable {
     }
     public void createRentalStaffTable(String tablename) {
         try{
-            stmt = databaseObject.getC ().createStatement ();
+            stmt = databaseObject.getConnection().createStatement ();
             stmt.executeUpdate("CREATE TABLE \"SkiRental\"." + tablename + "(" +
                     "InventoryNO d_invno," +
                     "StaffID d_staffid," +
@@ -144,7 +146,7 @@ public class CreateTable {
 
     public void createSchema(String schemaName) {
         try{
-            stmt = databaseObject.getC().createStatement ();
+            stmt = databaseObject.getConnection().createStatement ();
             stmt.executeUpdate ( "create schema \""+schemaName+"\";");
             stmt.executeUpdate ( "set search_path = \""+schemaName+"\";" );
             System.out.println ("Setting search path");

@@ -1,4 +1,6 @@
-package PatientBookingGUI.Database;
+package Database;
+
+import Database.DatabaseAccessObject;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +16,7 @@ public class GetData {
 
     public void getCustomerData() {
         try{
-            statement = databaseObject.getC ().createStatement ();
+            statement = databaseObject.getConnection().createStatement ();
             ResultSet rs = statement.executeQuery ( "SELECT * FROM \"SkiRental\".customer;" );
             while (rs.next ()) {
                 String id = rs.getString ( "CustomerID" );
