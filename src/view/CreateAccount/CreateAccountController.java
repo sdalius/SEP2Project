@@ -39,6 +39,10 @@ public class CreateAccountController {
 
     public void createAccount() {
         createAccountViewModel.createAccount(new Patient(txtfname.getText(), txtlname.getText(), txtcpr.getText(), txtaddress.getText(), txtbirthdate.getText(), txtphone.getText(), txtemail.getText(), txtpassword.getText()));
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("I'm an alert title");
+        alert.setHeaderText("I'm an alert header");
+        alert.setContentText("I'm the main alert context (body)");
     }
 
 }

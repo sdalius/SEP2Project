@@ -1,7 +1,6 @@
 package Database;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 
@@ -9,7 +8,7 @@ public class GetData {
     private Statement statement;
     private DatabaseAccessObject databaseObject;
 
-    public GetData() throws SQLException, ClassNotFoundException {
+    public GetData() {
         this.databaseObject = DatabaseAccessObject.getDatabaseObject ();
     }
 
