@@ -1,4 +1,4 @@
-package PatientBookingGUI.Database;
+package Database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,17 +6,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseAccessObject {
+    private Statement statement;
     private Connection c;
     private static DatabaseAccessObject instance;
 
-    private DatabaseAccessObject() throws ClassNotFoundException, SQLException {
-        Class.forName("org.postgresql.Driver");
-        c = DriverManager.getConnection("jdbc:postgresql://185.80.129.145:5432/postgres",
-                        "sep2stuff", "sep22009");
+    private DatabaseAccessObject() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://185.80.129.145:5432/sep2project",
+                            "sep2stuff", "sep22009");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace ();
+        }
         System.out.println("Database open ok");
     }
 
-    public static DatabaseAccessObject getDatabaseObject() throws SQLException, ClassNotFoundException {
+    public static DatabaseAccessObject getDatabaseObject() {
         if (instance == null)
         {
             instance = new DatabaseAccessObject ();
@@ -24,8 +29,12 @@ public class DatabaseAccessObject {
         return instance;
     }
 
-    public void closeConnection() throws SQLException {
-        c.close();
+    public void closeConnection() {
+        try {
+            c.close();
+        } catch (SQLException e) {
+            e.printStackTrace ();
+        }
         System.out.println ("Connection has been closed.");
     }
 

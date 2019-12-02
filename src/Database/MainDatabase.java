@@ -1,4 +1,4 @@
-package PatientBookingGUI.Database;
+package Database;
 
 import java.sql.SQLException;
 import java.text.ParseException;
