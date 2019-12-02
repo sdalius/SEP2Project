@@ -1,5 +1,5 @@
-import model.BookingClient;
-import model.BookingClientInterface;
+import model.AccountModel;
+import model.AccountModelInterface;
 import view.ViewHandler;
 import viewmodel.ViewModelFactory;
 import javafx.application.Application;
@@ -12,7 +12,7 @@ public class PatientBookingGUI extends Application {
 
     @Override
     public void start(Stage stage) throws RemoteException, NotBoundException {
-        BookingClientInterface bookingClient = new BookingClient ();
+        AccountModelInterface bookingClient = new AccountModel();
         ViewModelFactory vmf = new ViewModelFactory(bookingClient);
         ViewHandler vh = new ViewHandler(stage, vmf);
         vh.start();

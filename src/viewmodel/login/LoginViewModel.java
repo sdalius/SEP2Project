@@ -1,12 +1,12 @@
 package viewmodel.login;
 
-import model.BookingClientInterface;
+import model.AccountModelInterface;
 
 public class LoginViewModel {
 
-    private BookingClientInterface bookingClient;
+    private AccountModelInterface bookingClient;
 
-    public LoginViewModel(BookingClientInterface bookingClient) {
+    public LoginViewModel(AccountModelInterface bookingClient) {
         this.bookingClient= bookingClient;
     }
 }

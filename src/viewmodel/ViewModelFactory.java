@@ -1,6 +1,6 @@
 package viewmodel;
 
-import model.BookingClientInterface;
+import model.AccountModelInterface;
 import viewmodel.CreateAccount.CreateAccountViewModel;
 import viewmodel.login.LoginViewModel;
 
@@ -9,7 +9,7 @@ public class ViewModelFactory {
     private LoginViewModel loginViewModel;
     private CreateAccountViewModel createAccountViewModel;
 
-    public ViewModelFactory(BookingClientInterface bookingClientInterface) {
+    public ViewModelFactory(AccountModelInterface bookingClientInterface) {
         loginViewModel = new LoginViewModel ( bookingClientInterface );
         createAccountViewModel = new CreateAccountViewModel ( bookingClientInterface );
     }
