@@ -1,8 +1,8 @@
-package PatientBookingGUI.view;
+package view;
 
-import PatientBookingGUI.view.CreateAccount.CreateAccountController;
-import PatientBookingGUI.view.Login.LoginController;
-import PatientBookingGUI.viewmodel.ViewModelFactory;
+import view.CreateAccount.CreateAccountController;
+import view.Login.LoginController;
+import viewmodel.ViewModelFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

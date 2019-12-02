@@ -1,6 +1,6 @@
-package PatientBookingGUI.viewmodel.login;
+package viewmodel.login;
 
-import PatientBookingGUI.model.BookingClientInterface;
+import model.BookingClientInterface;
 
 public class LoginViewModel {
 

@@ -1,8 +1,7 @@
-package PatientBookingGUI.view.CreateAccount;
+package view.CreateAccount;
 
-import PatientBookingGUI.view.ViewHandler;
-import PatientBookingGUI.viewmodel.CreateAccount.CreateAccountViewModel;
-import PatientBookingGUI.viewmodel.login.LoginViewModel;
+import view.ViewHandler;
+import viewmodel.CreateAccount.CreateAccountViewModel;
 
 public class CreateAccountController {
 

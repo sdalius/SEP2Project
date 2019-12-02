@@ -1,7 +1,7 @@
-package PatientBookingGUI.view.Login;
+package view.Login;
 
-import PatientBookingGUI.view.ViewHandler;
-import PatientBookingGUI.viewmodel.login.LoginViewModel;
+import view.ViewHandler;
+import viewmodel.login.LoginViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

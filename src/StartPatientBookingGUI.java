@@ -1,5 +1,3 @@
-package PatientBookingGUI;
-
 import javafx.application.Application;
 
 public class StartPatientBookingGUI {

@@ -1,9 +1,7 @@
-package PatientBookingGUI;
-
-import PatientBookingGUI.model.BookingClient;
-import PatientBookingGUI.model.BookingClientInterface;
-import PatientBookingGUI.view.ViewHandler;
-import PatientBookingGUI.viewmodel.ViewModelFactory;
+import model.BookingClient;
+import model.BookingClientInterface;
+import view.ViewHandler;
+import viewmodel.ViewModelFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
