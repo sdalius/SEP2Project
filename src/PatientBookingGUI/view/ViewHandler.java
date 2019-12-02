@@ -52,7 +52,7 @@ public class ViewHandler {
             e.printStackTrace();
         }
         CreateAccountController controller = loader.getController();
-        controller.init(vmf.getLoginViewModel (), this);
+        controller.init(vmf.getCreateAccountViewModel (), this);
         mainStage.setTitle("Login View");
 
         Scene scene = new Scene(root);
