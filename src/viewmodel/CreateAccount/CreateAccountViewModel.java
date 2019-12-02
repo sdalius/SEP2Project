@@ -1,6 +1,6 @@
-package PatientBookingGUI.viewmodel.CreateAccount;
+package viewmodel.CreateAccount;
 
-import PatientBookingGUI.model.BookingClientInterface;
+import model.BookingClientInterface;
 
 public class CreateAccountViewModel {
     private BookingClientInterface bookingClient;

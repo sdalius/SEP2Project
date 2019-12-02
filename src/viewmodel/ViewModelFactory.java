@@ -1,8 +1,8 @@
-package PatientBookingGUI.viewmodel;
+package viewmodel;
 
-import PatientBookingGUI.model.BookingClientInterface;
-import PatientBookingGUI.viewmodel.CreateAccount.CreateAccountViewModel;
-import PatientBookingGUI.viewmodel.login.LoginViewModel;
+import model.BookingClientInterface;
+import viewmodel.CreateAccount.CreateAccountViewModel;
+import viewmodel.login.LoginViewModel;
 
 public class ViewModelFactory {
 

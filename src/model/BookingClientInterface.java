@@ -1,4 +1,4 @@
-package PatientBookingGUI.model;
+package model;
 
 import java.rmi.Remote;
 
