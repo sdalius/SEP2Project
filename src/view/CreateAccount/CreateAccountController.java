@@ -3,6 +3,7 @@ package view.CreateAccount;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import shared.Patient;
 import view.ViewHandler;
@@ -34,15 +35,11 @@ public class CreateAccountController {
         this.createAccountViewModel = createAccountViewModel;
         }
 
-    public void goBackToMain(ActionEvent actionEvent) {
+    public void goBackToMain() {
+        createAccountViewModel.goBackToMain(viewHandler);
     }
 
     public void createAccount() {
         createAccountViewModel.createAccount(new Patient(txtfname.getText(), txtlname.getText(), txtcpr.getText(), txtaddress.getText(), txtbirthdate.getText(), txtphone.getText(), txtemail.getText(), txtpassword.getText()));
-        Alert alert = new Alert(Alert.AlertType.NONE);
-        alert.setTitle("I'm an alert title");
-        alert.setHeaderText("I'm an alert header");
-        alert.setContentText("I'm the main alert context (body)");
     }
-
 }

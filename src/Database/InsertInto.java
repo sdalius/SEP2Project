@@ -1,6 +1,4 @@
 package Database;
-
-import javafx.scene.control.Alert;
 import shared.Patient;
 
 import java.sql.SQLException;
@@ -18,30 +16,25 @@ public class InsertInto {
     public void setSearchPath(String schemaName) {
         try {
             statement = dbobj.getC ().createStatement ();
-            statement.executeUpdate ( "set search_path = \"" + schemaName + "\";" );
+            System.out.println (statement.executeUpdate ( "set search_path = \"" + schemaName + "\";" ));
             System.out.println ( "Setting search path to " + schemaName );
         } catch (SQLException e) {
             e.printStackTrace ();
         }
     }
 
-    public void addPatient(Patient patient) {
+    public String addPatient(Patient patient) {
+        System.out.println (patient.getLname ());
         try {
             statement = dbobj.getC ().createStatement ();
-            statement.executeUpdate ( "INSERT INTO \"sep2\".patient(username, password, usertype, firstname, lastname, address, birthdate,phonenumber,email) VALUES('" + patient.getCpr () + "','" + patient.getPassword () + "','Patient', '" + patient.getFname () + "','" + patient.getLname () + "','" + patient.getAddress () + "','" + patient.getBirthdate () + "','" + patient.getPhoneNo () + "','" + patient.getEmail () + "'" + ")" );
+            System.out.println (statement.executeUpdate ( "INSERT INTO \"sep2\".patient(username, password, usertype, firstname, lastname, address, birthdate,phonenumber,email) VALUES('" + patient.getCpr () + "','" + patient.getPassword () + "','Patient', '" + patient.getFname () + "','" + patient.getLname () + "','" + patient.getAddress () + "','" + patient.getBirthdate () + "','" + patient.getPhoneNo () + "','" + patient.getEmail () + "'" + ")" ));
+            System.out.println ("Code has been executed");
+            System.out.println ("Am i here?");
             statement.close ();
-            Alert alert = new Alert (Alert.AlertType.INFORMATION);
-            alert.setTitle("Create Account");
-            alert.setHeaderText(null);
-            alert.setContentText("Account has been created!");
-            alert.showAndWait();
-
+            return "Success!";
         } catch (SQLException e) {
-            Alert alert = new Alert (Alert.AlertType.ERROR);
-            alert.setTitle("Create Account Error!");
-            alert.setHeaderText("Error!");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
+            return e.getMessage();
         }
+
     }
 }
