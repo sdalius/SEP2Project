@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="600.0" style="-fx-background-color: #e6ffff#ccffcc;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CreateAccount.CreateAccountController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="600.0" style="-fx-background-color: #e6ffff#ccffcc;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.CreateAccount.CreateAccountController">
    <children>
       <Label layoutX="25.0" layoutY="26.0" text="Medical booking system">
          <font>
@@ -14,32 +14,32 @@
       </Label>
       <ImageView fitHeight="90.0" fitWidth="373.0" layoutX="359.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="130.0" layoutX="16.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="130.0" layoutX="132.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="130.0" layoutX="247.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="130.0" layoutX="362.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="130.0" layoutX="478.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <Button layoutX="208.0" layoutY="347.0" mnemonicParsing="false" onAction="#createAccount" text="Create account" />

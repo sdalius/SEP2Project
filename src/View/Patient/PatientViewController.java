@@ -1,7 +1,7 @@
-package view.Patient;
+package View.Patient;
 
-import view.ViewHandler;
-import viewmodel.PatientView.PatientViewModel;
+import View.ViewHandler;
+import ViewModel.PatientView.PatientViewModel;
 
 public class PatientViewController {
     public void init(PatientViewModel patientViewModel, ViewHandler viewHandler) {

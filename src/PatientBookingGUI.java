@@ -1,9 +1,9 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.BookingClient;
-import model.BookingClientInterface;
-import view.ViewHandler;
-import viewmodel.ViewModelFactory;
+import Model.BookingClient;
+import Model.BookingClientInterface;
+import View.ViewHandler;
+import ViewModel.ViewModelFactory;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;

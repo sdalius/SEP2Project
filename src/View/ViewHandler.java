@@ -1,9 +1,9 @@
-package view;
+package View;
 
-import view.CreateAccount.CreateAccountController;
-import view.Login.LoginController;
-import view.Patient.PatientViewController;
-import viewmodel.ViewModelFactory;
+import View.CreateAccount.CreateAccountController;
+import View.Login.LoginController;
+import View.Patient.PatientViewController;
+import ViewModel.ViewModelFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -45,7 +45,7 @@ public class ViewHandler {
     public void openCreateAccountView() {
         FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(getClass().getResource("CreateAccount/createAccount.fxml"));
+        loader.setLocation(getClass().getResource("CreateAccount/CreateAccount.fxml"));
         Parent root = null;
         try {
             root = loader.load();
@@ -64,7 +64,7 @@ public class ViewHandler {
     public void openPatientView() {
         FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(getClass().getResource("Patient/patientview.fxml"));
+        loader.setLocation(getClass().getResource("Patient/PatientView.fxml"));
         Parent root = null;
         try {
             root = loader.load();

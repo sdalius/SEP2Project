@@ -1,5 +1,5 @@
 package Database;
-import shared.Patient;
+import Shared.Patient;
 
 import java.sql.SQLException;
 import java.sql.Statement;

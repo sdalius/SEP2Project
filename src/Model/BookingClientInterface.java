@@ -1,7 +1,7 @@
-package model;
+package Model;
 
-import shared.Patient;
-import shared.User;
+import Shared.Patient;
+import Shared.User;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

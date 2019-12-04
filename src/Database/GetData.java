@@ -1,6 +1,6 @@
 package Database;
 
-import shared.User;
+import Shared.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

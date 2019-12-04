@@ -2,8 +2,8 @@ package Server;
 
 import Database.GetData;
 import Database.InsertInto;
-import shared.Patient;
-import shared.User;
+import Shared.Patient;
+import Shared.User;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

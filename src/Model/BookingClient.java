@@ -1,9 +1,9 @@
-package model;
+package Model;
 
 import Server.ServerInterface;
 import javafx.scene.control.Alert;
-import shared.Patient;
-import shared.User;
+import Shared.Patient;
+import Shared.User;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;

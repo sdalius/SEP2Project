@@ -1,9 +1,9 @@
-package viewmodel;
+package ViewModel;
 
-import model.BookingClientInterface;
-import viewmodel.CreateAccount.CreateAccountViewModel;
-import viewmodel.PatientView.PatientViewModel;
-import viewmodel.login.LoginViewModel;
+import Model.BookingClientInterface;
+import ViewModel.CreateAccount.CreateAccountViewModel;
+import ViewModel.PatientView.PatientViewModel;
+import ViewModel.Login.LoginViewModel;
 
 public class ViewModelFactory {
 

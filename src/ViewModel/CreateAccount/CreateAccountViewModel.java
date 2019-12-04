@@ -1,8 +1,8 @@
-package viewmodel.CreateAccount;
+package ViewModel.CreateAccount;
 
-import model.BookingClientInterface;
-import shared.Patient;
-import view.ViewHandler;
+import Model.BookingClientInterface;
+import Shared.Patient;
+import View.ViewHandler;
 
 import java.rmi.RemoteException;
 

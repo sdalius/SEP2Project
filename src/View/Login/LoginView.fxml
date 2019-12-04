@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="600.0" style="-fx-background-color: #e6ffff#ccffcc;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Login.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="600.0" style="-fx-background-color: #e6ffff#ccffcc;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Login.LoginController">
    <children>
       <Label layoutX="22.0" layoutY="16.0" text="Medical booking system">
          <font>
@@ -15,32 +15,32 @@
       <Button layoutX="119.0" layoutY="299.0" mnemonicParsing="false" onAction="#logIn" prefHeight="31.0" prefWidth="119.0" text="Log in" />
       <ImageView fitHeight="90.0" fitWidth="373.0" layoutX="355.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="130.0" layoutX="14.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="130.0" layoutX="131.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="130.0" layoutX="247.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="130.0" layoutX="360.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="130.0" layoutX="472.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/heart1.png" />
+            <Image url="@../Images/heart1.png" />
          </image>
       </ImageView>
       <TextField fx:id="txtfieldUsername" layoutX="267.0" layoutY="169.0" />

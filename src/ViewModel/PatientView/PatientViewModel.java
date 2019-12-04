@@ -1,6 +1,6 @@
-package viewmodel.PatientView;
+package ViewModel.PatientView;
 
-import model.BookingClientInterface;
+import Model.BookingClientInterface;
 
 public class PatientViewModel {
 

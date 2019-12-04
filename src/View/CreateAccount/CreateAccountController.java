@@ -1,13 +1,10 @@
-package view.CreateAccount;
+package View.CreateAccount;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import shared.Patient;
-import view.ViewHandler;
-import viewmodel.CreateAccount.CreateAccountViewModel;
+import Shared.Patient;
+import View.ViewHandler;
+import ViewModel.CreateAccount.CreateAccountViewModel;
 
 public class CreateAccountController {
     @FXML

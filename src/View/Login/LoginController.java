@@ -1,13 +1,13 @@
-package view.Login;
+package View.Login;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-import shared.User;
-import view.ViewHandler;
-import viewmodel.login.LoginViewModel;
+import Shared.User;
+import View.ViewHandler;
+import ViewModel.Login.LoginViewModel;
 
 public class LoginController {
     @FXML
