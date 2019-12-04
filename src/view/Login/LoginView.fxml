@@ -12,7 +12,7 @@
          </font>
       </Label>
       <Button fx:id="btnCreateAccount" layoutX="360.0" layoutY="299.0" mnemonicParsing="false" onAction="#openCreateAccountView" text="Create account" />
-      <Button layoutX="119.0" layoutY="299.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="119.0" text="Log in" />
+      <Button layoutX="119.0" layoutY="299.0" mnemonicParsing="false" onAction="#logIn" prefHeight="31.0" prefWidth="119.0" text="Log in" />
       <ImageView fitHeight="90.0" fitWidth="373.0" layoutX="355.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/heart1.png" />
@@ -43,8 +43,8 @@
             <Image url="@../images/heart1.png" />
          </image>
       </ImageView>
-      <TextField layoutX="267.0" layoutY="164.0" />
-      <TextField layoutX="267.0" layoutY="223.0" />
+      <TextField fx:id="txtfieldUsername" layoutX="267.0" layoutY="169.0" />
+      <TextField fx:id="txtfieldPassword" layoutX="267.0" layoutY="229.0" />
       <Label layoutX="118.0" layoutY="163.0" text="Username">
          <font>
             <Font size="23.0" />

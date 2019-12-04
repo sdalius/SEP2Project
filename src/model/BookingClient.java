@@ -3,6 +3,7 @@ package model;
 import Server.ServerInterface;
 import javafx.scene.control.Alert;
 import shared.Patient;
+import shared.User;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -26,20 +27,31 @@ public class BookingClient implements BookingClientInterface {
             if (errmsg != "Success")
             {
                 Alert alert = new Alert( Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText("Look, an Information Dialog");
+                alert.setTitle("Account info");
+                alert.setHeaderText(null);
                 alert.setContentText(errmsg);
                 alert.showAndWait();
             }
             else{
                 Alert alert = new Alert( Alert.AlertType.ERROR);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText("Look, an Information Dialog");
+                alert.setTitle("Account info");
+                alert.setHeaderText(null);
                 alert.setContentText("Account has been created!");
                 alert.showAndWait();
             }
         } catch (Exception e) {
             e.printStackTrace ();
         }
+    }
+
+    @Override
+    public User logIn(String username, String password) {
+        User usr = null;
+        try {
+            usr = serverInterface.logIn ( username,password );
+        } catch (RemoteException e) {
+            e.printStackTrace ();
+        }
+        return usr;
     }
 }

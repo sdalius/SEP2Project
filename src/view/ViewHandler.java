@@ -2,6 +2,7 @@ package view;
 
 import view.CreateAccount.CreateAccountController;
 import view.Login.LoginController;
+import view.Patient.PatientViewController;
 import viewmodel.ViewModelFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -54,6 +55,25 @@ public class ViewHandler {
         CreateAccountController controller = loader.getController();
         controller.init(vmf.getCreateAccountViewModel (), this);
         mainStage.setTitle("Login View");
+
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
+    }
+
+    public void openPatientView() {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("Patient/patientview.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PatientViewController controller = loader.getController();
+        controller.init(vmf.getPatientViewModel (), this);
+        mainStage.setTitle("Patient View");
 
         Scene scene = new Scene(root);
         mainStage.setScene(scene);

@@ -1,6 +1,9 @@
 package Database;
 
+import shared.User;
+
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 
@@ -12,37 +15,35 @@ public class GetData {
         this.databaseObject = DatabaseAccessObject.getDatabaseObject ();
     }
 
-    public void getCustomerData() {
+    public User getCustomerData(String username, String password) {
+        int id = 0;
+        String username1 = null;
+        String usertype = null;
         try{
+            databaseObject.setSearchPath ( "sep2" );
             statement = databaseObject.getC ().createStatement ();
-            ResultSet rs = statement.executeQuery ( "SELECT * FROM \"SkiRental\".customer;" );
-            while (rs.next ()) {
-                String id = rs.getString ( "CustomerID" );
-                String fname = rs.getString ( "FirstName" );
-                String lname = rs.getString ( "LastName" );
-                String address = rs.getString ( "Address" );
-                String birthday = rs.getString ( "Birthday" );
-                String phoneNo = rs.getString ( "PhoneNo" );
-                String email = rs.getString ( "eMail" );
-
-                System.out.println ( "CustomerID = " + id );
-                System.out.println ( "FirstName = " + fname );
-                System.out.println ( "LastName = " + lname );
-                System.out.println ( "Address = " + address );
-                System.out.println ( "Birthday = " + birthday );
-                System.out.println ( "PhoneNo = " + phoneNo );
-                System.out.println ( "eMail = " + email );
-                System.out.println ();
+            ResultSet rs = statement.executeQuery ( "Select * from \"sep2\".users\n" +
+                    "Where users.username LIKE '"+username+"' AND users.password LIKE '"+password+"'" );
+            if(rs.isBeforeFirst () == false)
+            {
+                return null;
+            }
+            else {
+                while (rs.next ()) {
+                    id = rs.getInt ( "userid" );
+                    username1 = rs.getString ( "username" );
+                    String password1 = rs.getString ( "password" );
+                    usertype = rs.getString ( "usertype" );
+                }
             }
             rs.close ();
             statement.close ();
         }
-        catch (Exception e)
+        catch (SQLException e)
         {
-            System.err.println ( e.getClass ().getName () + ": " + e.getMessage () );
-            System.exit ( 0 );
+            e.getMessage ();
         }
-        System.out.println ( "Database query ok"  );
+        return new User(id,username1,usertype);
     }
 }
 

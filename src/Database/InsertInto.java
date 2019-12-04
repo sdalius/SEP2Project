@@ -10,17 +10,7 @@ public class InsertInto {
 
     public InsertInto() {
         this.dbobj = DatabaseAccessObject.getDatabaseObject ();
-        setSearchPath ( "sep2" );
-    }
-
-    public void setSearchPath(String schemaName) {
-        try {
-            statement = dbobj.getC ().createStatement ();
-            System.out.println (statement.executeUpdate ( "set search_path = \"" + schemaName + "\";" ));
-            System.out.println ( "Setting search path to " + schemaName );
-        } catch (SQLException e) {
-            e.printStackTrace ();
-        }
+        dbobj.setSearchPath ( "sep2" );
     }
 
     public String addPatient(Patient patient) {
@@ -31,7 +21,7 @@ public class InsertInto {
             System.out.println ("Code has been executed");
             System.out.println ("Am i here?");
             statement.close ();
-            return "Success!";
+            return "Success!" ;
         } catch (SQLException e) {
             return e.getMessage();
         }
