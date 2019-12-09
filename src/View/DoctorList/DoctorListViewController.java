@@ -20,8 +20,12 @@ public class DoctorListViewController {
     private TableColumn PhoneNoCol;
     @FXML
     private TableColumn emailCol;
+    private DoctorListViewModel doctorListViewModel;
+    private ViewHandler viewHandler;
 
-    public void init(DoctorListViewModel patientViewModel, ViewHandler viewHandler) {
+    public void init(DoctorListViewModel doctorListViewModel, ViewHandler viewHandler) {
+        this.doctorListViewModel = doctorListViewModel;
+        this.viewHandler = viewHandler;
 
     }
 }
