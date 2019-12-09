@@ -1,8 +1,8 @@
 package Model;
 
 import Server.ServerInterface;
-import javafx.scene.control.Alert;
 import Shared.Patient;
+import javafx.scene.control.Alert;
 import Shared.User;
 
 import java.rmi.NotBoundException;

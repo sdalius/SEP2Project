@@ -1,5 +1,6 @@
 package View.DoctorList;
 
+import Shared.Doctor;
 import View.ViewHandler;
 import ViewModel.DoctorList.DoctorListViewModel;
 import javafx.fxml.FXML;
