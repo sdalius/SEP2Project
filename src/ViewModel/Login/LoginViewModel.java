@@ -7,18 +7,18 @@ import java.rmi.RemoteException;
 
 public class LoginViewModel {
 
-    private BookingClientInterface bookingClient;
+    private BookingClientInterface clientInterface;
 
-    public LoginViewModel(BookingClientInterface bookingClient) {
-        this.bookingClient= bookingClient;
+    public LoginViewModel(BookingClientInterface clientInterface) {
+        this.clientInterface = clientInterface;
     }
 
     public User logIn(String username, String password)
     {
-        System.out.println ("[LoginViewModel] Sending to bookingClient");
+        System.out.println ("[LoginViewModel] Sending to client interface");
         User usr = null;
         try {
-            usr = bookingClient.logIn ( username,password );
+            usr = clientInterface.logIn ( username,password );
         } catch (RemoteException e) {
             e.printStackTrace ();
         }

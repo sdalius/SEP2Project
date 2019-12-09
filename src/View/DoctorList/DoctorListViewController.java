@@ -6,6 +6,7 @@ import ViewModel.DoctorList.DoctorListViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class DoctorListViewController {
 
@@ -27,6 +28,15 @@ public class DoctorListViewController {
     public void init(DoctorListViewModel doctorListViewModel, ViewHandler viewHandler) {
         this.doctorListViewModel = doctorListViewModel;
         this.viewHandler = viewHandler;
+        FNameCol.setCellValueFactory(new PropertyValueFactory<>("fname"));
+        LNameCol.setCellValueFactory(new PropertyValueFactory<>("lname"));
+        OfficeNoCol.setCellValueFactory(new PropertyValueFactory<>("officenr"));
+        PhoneNoCol.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("eMail"));
+        doctorTableView.setItems(doctorListViewModel.getDoctorList());
+    }
 
+    public void onBackButton(){
+        viewHandler.openPatientView();
     }
 }

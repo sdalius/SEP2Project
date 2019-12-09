@@ -3,7 +3,7 @@ package Shared;
 import java.io.Serializable;
 
 public class Doctor implements Serializable {
-    private String fname, lname,phoneNo,eMail,officenr;
+    private String fname,lname,phoneNo,eMail,officenr;
     private int doctorid;
 
     public Doctor(int doctorid,String fname, String lname, String phoneNo, String eMail, String officenr)
