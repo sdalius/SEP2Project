@@ -1,6 +1,7 @@
 package ViewModel.CreateAccount;
 
 import Model.BookingClientInterface;
+import Shared.Doctor;
 import Shared.Patient;
 import View.ViewHandler;
 

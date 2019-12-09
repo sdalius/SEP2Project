@@ -19,6 +19,7 @@ public class DatabaseAccessObject {
             e.printStackTrace ();
         }
         System.out.println("Database open ok");
+        setSearchPath ( "sep2" );
     }
 
     public static DatabaseAccessObject getDatabaseObject() {

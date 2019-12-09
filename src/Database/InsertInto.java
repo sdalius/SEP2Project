@@ -1,4 +1,5 @@
 package Database;
+import Shared.Doctor;
 import Shared.Patient;
 
 import java.sql.SQLException;
