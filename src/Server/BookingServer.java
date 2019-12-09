@@ -2,11 +2,13 @@ package Server;
 
 import Database.GetData;
 import Database.InsertInto;
+import Shared.Doctor;
 import Shared.Patient;
 import Shared.User;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 public class BookingServer implements ServerInterface{
 
@@ -30,5 +32,12 @@ public class BookingServer implements ServerInterface{
         System.out.println ("[BookingServer] User username is : " + username);
         User usr = getData.getCustomerData ( username,password );
         return usr;
+    }
+
+    @Override
+    public ArrayList<Doctor> getDoctorList() {
+        System.out.println("Getting doctor list");
+        ArrayList<Doctor> doctors = getData.getAllDoctors();
+        return doctors;
     }
 }

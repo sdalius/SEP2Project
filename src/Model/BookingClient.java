@@ -22,7 +22,7 @@ public class BookingClient implements BookingClientInterface {
     public void createAccount(Patient patient) {
         System.out.println ("[BookingClient] I've received a patient with a name of:" + patient.getFname ());
         try {
-            String errmsg = serverInterface.createAccount ( patient );
+            String errmsg = serverInterface.createAccount(patient);
             System.out.println ("[BookingClient] Sending object to the server Interface");
             if (errmsg != "Success")
             {
