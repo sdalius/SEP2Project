@@ -15,20 +15,18 @@ public class DoctorListViewController {
     @FXML
     private TableView<Doctor> doctorTableView;
     @FXML
-    private TableColumn FNameCol;
+    private TableColumn<Doctor, String> FNameCol;
     @FXML
-    private TableColumn LNameCol;
+    private TableColumn<Doctor, String> LNameCol;
     @FXML
-    private TableColumn OfficeNoCol;
+    private TableColumn<Doctor, String> OfficeNoCol;
     @FXML
-    private TableColumn PhoneNoCol;
+    private TableColumn<Doctor, String> PhoneNoCol;
     @FXML
-    private TableColumn emailCol;
-    private DoctorListViewModel doctorListViewModel;
+    private TableColumn<Doctor, String> emailCol;
     private ViewHandler viewHandler;
 
     public void init(DoctorListViewModel doctorListViewModel, ViewHandler viewHandler) {
-        this.doctorListViewModel = doctorListViewModel;
         this.viewHandler = viewHandler;
         FNameCol.setCellValueFactory(new PropertyValueFactory<>("fname"));
         LNameCol.setCellValueFactory(new PropertyValueFactory<>("lname"));

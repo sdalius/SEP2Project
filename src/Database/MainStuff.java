@@ -6,7 +6,7 @@ public class MainStuff {
 
         for (int i = 0 ; i < getdata.getAllDoctors ().size () ; i++)
         {
-            System.out.println (getdata.getAllDoctors ().get ( i ).getFname ());
+            System.out.println (getdata.getAllDoctors ().get ( i ).geteMail ());
         }
     }
 

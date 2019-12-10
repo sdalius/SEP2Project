@@ -21,7 +21,7 @@ public class ViewHandler {
         mainStage = stage;
     }
     public void start() {
-        openLoginView();
+        openDoctorListView();
     }
 
     public void openLoginView() {

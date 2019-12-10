@@ -50,13 +50,13 @@
         </ImageView>
         <AnchorPane layoutX="334.0" layoutY="78.0" />
         <Button layoutX="25.0" layoutY="327.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="84.0" text="Back" />
-      <TableView fx:id="doctorTableView" layoutX="24.0" layoutY="103.0" prefHeight="203.0" prefWidth="532.0">
+      <TableView fx:id="doctorTableView" layoutX="24.0" layoutY="103.0" prefHeight="203.0" prefWidth="549.0">
         <columns>
           <TableColumn fx:id="FNameCol" prefWidth="93.0" text="First name" />
           <TableColumn fx:id="LNameCol" prefWidth="84.0" text="Last name" />
             <TableColumn fx:id="OfficeNoCol" prefWidth="66.0" text="Office #" />
             <TableColumn fx:id="PhoneNoCol" prefWidth="93.0" text="Phone #" />
-            <TableColumn fx:id="emailCol" prefWidth="193.0" text="e-mail" />
+            <TableColumn fx:id="emailCol" prefWidth="212.0" text="e-mail" />
         </columns>
       </TableView>
       <Button layoutX="478.0" layoutY="324.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="Book">

@@ -6,7 +6,7 @@ public class Doctor implements Serializable {
     private String fname,lname,phoneNo,eMail,officenr;
     private int doctorid;
 
-    public Doctor(int doctorid,String fname, String lname, String phoneNo, String eMail, String officenr)
+    public Doctor(int doctorid, String fname, String lname, String phoneNo, String eMail, String officenr)
     {
         this.doctorid = doctorid;
         this.fname = fname;
@@ -35,7 +35,6 @@ public class Doctor implements Serializable {
     public int getDoctorid() {
         return doctorid;
     }
-
     public String getOfficenr() {
         return officenr;
     }
