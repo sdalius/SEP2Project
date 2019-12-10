@@ -58,7 +58,7 @@ public class BookingClient implements BookingClientInterface {
     }
 
     @Override
-    public ArrayList<Doctor> getDoctorList() {
+    public ArrayList<Doctor> getDoctorList() throws RemoteException {
         return serverInterface.getDoctorList();
     }
 }

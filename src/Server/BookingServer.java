@@ -15,7 +15,7 @@ public class BookingServer implements ServerInterface{
     private InsertInto insertInto;
     private GetData getData;
     public BookingServer() throws RemoteException {
-        UnicastRemoteObject.exportObject ( this, 0 );
+        UnicastRemoteObject.exportObject(this,0);
         insertInto = new InsertInto ();
         getData = new GetData ();
     }
@@ -37,7 +37,6 @@ public class BookingServer implements ServerInterface{
     @Override
     public ArrayList<Doctor> getDoctorList() {
         System.out.println("Getting doctor list");
-        ArrayList<Doctor> doctors = getData.getAllDoctors();
-        return doctors;
+        return getData.getAllDoctors();
     }
 }

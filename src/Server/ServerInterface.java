@@ -11,5 +11,5 @@ import java.util.ArrayList;
 public interface ServerInterface extends Remote {
     String createAccount(Patient patient) throws RemoteException;
     User logIn(String username, String password) throws RemoteException;
-    ArrayList<Doctor> getDoctorList();
+    ArrayList<Doctor> getDoctorList() throws RemoteException;
 }

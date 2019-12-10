@@ -8,6 +8,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.rmi.RemoteException;
+
 public class DoctorListViewController {
 
     @FXML
@@ -33,7 +35,11 @@ public class DoctorListViewController {
         OfficeNoCol.setCellValueFactory(new PropertyValueFactory<>("officenr"));
         PhoneNoCol.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("eMail"));
-        doctorTableView.setItems(doctorListViewModel.getDoctors());
+        try {
+            doctorTableView.setItems(doctorListViewModel.getDoctors());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onBackButton(){
