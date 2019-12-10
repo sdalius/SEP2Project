@@ -1,9 +1,11 @@
 package View;
 
+import Shared.User;
 import View.CreateAccount.CreateAccountController;
 import View.DoctorList.DoctorListViewController;
 import View.Login.LoginController;
 import View.Patient.PatientViewController;
+import View.PickADate.PickADateController;
 import ViewModel.ViewModelFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,7 +23,7 @@ public class ViewHandler {
         mainStage = stage;
     }
     public void start() {
-        openDoctorListView();
+        openPickADateView ();
     }
 
     public void openLoginView() {
@@ -62,9 +64,8 @@ public class ViewHandler {
         mainStage.show();
     }
 
-    public void openDoctorListView() {
+    public void openDoctorListView(Object usr) {
         FXMLLoader loader = new FXMLLoader();
-
         loader.setLocation(getClass().getResource("DoctorList/DoctorListView.fxml"));
         Parent root = null;
         try {
@@ -74,6 +75,7 @@ public class ViewHandler {
         }
         DoctorListViewController controller = loader.getController();
         controller.init(vmf.getDoctorListViewModel (), this);
+        controller.setUsr(usr);
         mainStage.setTitle("Doctor list");
 
         Scene scene = new Scene(root);
@@ -81,7 +83,7 @@ public class ViewHandler {
         mainStage.show();
     }
 
-    public void openPatientView() {
+    public void openPatientView(Object usr) {
         FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("Patient/PatientView.fxml"));
@@ -93,10 +95,34 @@ public class ViewHandler {
         }
         PatientViewController controller = loader.getController();
         controller.init(vmf.getPatientViewModel (), this);
+        controller.setUsr(usr);
         mainStage.setTitle("Patient View");
 
         Scene scene = new Scene(root);
         mainStage.setScene(scene);
         mainStage.show();
+    }
+
+    public void openPickADateView() {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("PickADate/PickADateView.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PickADateController controller = loader.getController();
+        controller.init(vmf.getPickADateViewModel (), this);
+        mainStage.setTitle("Booking Options");
+
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
+    }
+    public void openDoctorView()
+    {
+
     }
 }

@@ -42,7 +42,7 @@ public class DatabaseAccessObject {
     public void setSearchPath(String schemaName) {
         try {
             statement = c.createStatement ();
-            System.out.println (statement.executeUpdate ( "set search_path = \"" + schemaName + "\";" ));
+            statement.executeUpdate ( "set search_path = \"" + schemaName + "\";" );
             System.out.println ( "Setting search path to " + schemaName );
         } catch (SQLException e) {
             e.printStackTrace ();

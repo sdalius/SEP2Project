@@ -1,9 +1,8 @@
 package Database;
 
 import Shared.Doctor;
-import Shared.User;
+import Shared.Patient;
 
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,10 +17,9 @@ public class GetData {
         this.databaseObject = DatabaseAccessObject.getDatabaseObject ();
     }
 
-    public User getCustomerData(String username, String password) {
+    public Object getCustomerData(String username, String password) {
         int id = 0;
-        String username1 = null;
-        String usertype = null;
+        String usertype = "";
         try{
             statement = databaseObject.getC ().createStatement ();
             ResultSet rs = statement.executeQuery ( "Select * from \"sep2\".users\n" +
@@ -30,41 +28,71 @@ public class GetData {
             {
                 return null;
             }
-            else {
+            else{
                 while (rs.next ())
                 {
                     id = rs.getInt ( "userid" );
-                    username1 = rs.getString ( "username" );
                     usertype = rs.getString ( "usertype" );
+                }
+                if (usertype.equals ("Patient"))
+                {
+                    ResultSet patient = statement.executeQuery ( "Select userid,usertype,firstname,lastname,address,birthdate,phonenumber,email from \"sep2\".patient\n" +
+                            "Where patient.userid = '"+id+"'");
+                    while (patient.next ())
+                    {
+                        String firstname = patient.getString ("firstname");
+                        String lastname = patient.getString ("lastname");
+                        String address = patient.getString ("address");
+                        String birthdate = patient.getString ("birthdate");
+                        String phoneno = patient.getString ("phonenumber");
+                        String email = patient.getString ("email");
+                        Patient patientobj = new Patient (id,firstname,lastname,address,birthdate,phoneno,email);
+                        return patientobj;
+                    }
+                }
+                else if(usertype == "Doctor")
+                {
+                    ResultSet doctor = statement.executeQuery ( "Select userid,usertype,firstname,lastname,officenumber,phonenumber,email from \"sep2\".doctor\n" +
+                            "Where doctor.userid LIKE '"+id+"'");
+                    while (rs.next())
+                    {
+                        String firstname = doctor.getString ("firstname");
+                        String lastname = doctor.getString ("lastname");
+                        int officenumber = doctor.getInt ("officenumber");
+                        String phoneno = doctor.getString ("phoneNo");
+                        String email = doctor.getString ("email");
+                        Doctor doctorobj = new Doctor (id,firstname,lastname,phoneno,email,officenumber);
+                        return doctorobj;
+                    }
                 }
             }
             rs.close ();
             statement.close ();
+            databaseObject.getC ().close ();
         }
         catch (SQLException e)
         {
             e.getMessage ();
         }
-        final User user = new User ( id, username1, usertype );
-        return user;
+        return null;
     }
-
     public ArrayList<Doctor> getAllDoctors() {
         ArrayList<Doctor> doctorArr = new ArrayList<> ();
         try {
-            statement = databaseObject.getC ().createStatement ();
+            statement = databaseObject.getC().createStatement ();
             ResultSet rs = statement.executeQuery ( "Select * from \"sep2\".doctor\n" );
             while (rs.next ()) {
                 int id = rs.getInt ( "userid" );
                 String firstname = rs.getString ( "firstname" );
                 String lastname = rs.getString ( "lastname" );
-                String officenumber = rs.getString ( "officenumber" );
+                int officenumber = rs.getInt ( "officenumber" );
                 String phonenumber = rs.getString ( "phonenumber" );
                 String email = rs.getString ( "email" );
                 doctorArr.add ( new Doctor ( id, firstname, lastname, phonenumber, email, officenumber ) );
             }
             rs.close ();
             statement.close ();
+            databaseObject.getC().close();
         } catch (SQLException e) {
             e.getMessage ();
         }

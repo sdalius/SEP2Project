@@ -2,17 +2,16 @@ package Shared;
 
 import java.io.Serializable;
 
-public class Doctor implements Serializable {
-    private String fname,lname,phoneNo,eMail,officenr;
-    private int doctorid;
-
-    public Doctor(int doctorid, String fname, String lname, String phoneNo, String eMail, String officenr)
+public class Doctor extends User implements Serializable {
+    private String fname,lname,phoneNo,email;
+    private int officenr;
+    public Doctor(int doctorid, String fname, String lname, String phoneNo, String email, int officenr)
     {
-        this.doctorid = doctorid;
+        super (doctorid,"Doctor");
         this.fname = fname;
         this.lname = lname;
         this.phoneNo = phoneNo;
-        this.eMail = eMail;
+        this.email = email;
         this.officenr = officenr;
     }
 
@@ -28,14 +27,11 @@ public class Doctor implements Serializable {
         return phoneNo;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public int getDoctorid() {
-        return doctorid;
-    }
-    public String getOfficenr() {
+    public int getOfficenr() {
         return officenr;
     }
 }

@@ -1,5 +1,7 @@
 package View.Login;
 
+import Shared.Doctor;
+import Shared.Patient;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -31,7 +33,7 @@ public class LoginController {
 
     public void logIn() {
         System.out.println ("[LoginController]Sending to login view model");
-        User msg = loginViewModel.logIn ( txtfieldUsername.getText (),txtfieldPassword.getText () );
+        Object msg = loginViewModel.logIn ( txtfieldUsername.getText (),txtfieldPassword.getText () );
         if(msg == null)
         {
             Alert alert = new Alert( Alert.AlertType.ERROR);
@@ -47,9 +49,13 @@ public class LoginController {
             alert.setContentText("Successfully logged in!");
             alert.showAndWait();
             if (alert.getResult () == ButtonType.OK) {
-                if (msg.getUsertype().equals ("Patient") )
+                if (msg instanceof Patient)
                 {
-                    viewHandler.openPatientView ();
+                    viewHandler.openPatientView (msg);
+                }
+                else if (msg instanceof Doctor)
+                {
+                    viewHandler.openDoctorView();
                 }
             }
         }

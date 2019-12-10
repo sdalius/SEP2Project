@@ -13,10 +13,10 @@ public class LoginViewModel {
         this.clientInterface = clientInterface;
     }
 
-    public User logIn(String username, String password)
+    public Object logIn(String username, String password)
     {
         System.out.println ("[LoginViewModel] Sending to client interface");
-        User usr = null;
+        Object usr = null;
         try {
             usr = clientInterface.logIn ( username,password );
         } catch (RemoteException e) {

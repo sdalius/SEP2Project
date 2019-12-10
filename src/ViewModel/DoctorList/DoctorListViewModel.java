@@ -12,14 +12,17 @@ public class DoctorListViewModel {
     private ObservableList<Doctor> doctors;
     private BookingClientInterface clientInterface;
 
-
     public DoctorListViewModel(BookingClientInterface clientInterface) {
         this.clientInterface = clientInterface;
         doctors = FXCollections.observableArrayList();
     }
 
-    public ObservableList<Doctor> getDoctors() throws RemoteException {
-        doctors.addAll(clientInterface.getDoctorList());
+    public ObservableList<Doctor> getDoctors() {
+        try {
+            doctors.addAll(clientInterface.getDoctorList());
+        } catch (RemoteException e) {
+            e.printStackTrace ();
+        }
         return doctors;
     }
 }

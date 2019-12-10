@@ -2,7 +2,6 @@ package Model;
 
 import Server.ServerInterface;
 import Shared.Doctor;
-import Shared.Patient;
 import javafx.scene.control.Alert;
 import Shared.User;
 
@@ -16,30 +15,28 @@ public class BookingClient implements BookingClientInterface {
     private ServerInterface serverInterface;
 
     public BookingClient() throws RemoteException, NotBoundException {
-        Registry registry = LocateRegistry.getRegistry("localhost",1099);
-        serverInterface = (ServerInterface) registry.lookup("BookingServer");
+        Registry registry = LocateRegistry.getRegistry ("localhost", 1099);
+        serverInterface = (ServerInterface) registry.lookup ("BookingServer");
     }
 
     @Override
-    public void createAccount(Patient patient) {
-        System.out.println ("[BookingClient] I've received a patient with a name of:" + patient.getFname ());
+    public void createAccount(String fname, String lname, String username, String address,String birthdate, String phoneNo, String eMail,String password) {
+        System.out.println ("[BookingClient] I've received a patient with a name of:" + fname);
         try {
-            String errmsg = serverInterface.createAccount(patient);
+            String errmsg = serverInterface.createAccount (fname, lname, username, address,birthdate, phoneNo, eMail,password);
             System.out.println ("[BookingClient] Sending object to the server Interface");
-            if (errmsg != "Success")
-            {
-                Alert alert = new Alert( Alert.AlertType.INFORMATION);
-                alert.setTitle("Account info");
-                alert.setHeaderText(null);
-                alert.setContentText(errmsg);
-                alert.showAndWait();
-            }
-            else{
-                Alert alert = new Alert( Alert.AlertType.ERROR);
-                alert.setTitle("Account info");
-                alert.setHeaderText(null);
-                alert.setContentText("Account has been created!");
-                alert.showAndWait();
+            if (errmsg != "Success") {
+                Alert alert = new Alert (Alert.AlertType.INFORMATION);
+                alert.setTitle ("Account info");
+                alert.setHeaderText (null);
+                alert.setContentText (errmsg);
+                alert.showAndWait ();
+            } else {
+                Alert alert = new Alert (Alert.AlertType.ERROR);
+                alert.setTitle ("Account info");
+                alert.setHeaderText (null);
+                alert.setContentText ("Account has been created!");
+                alert.showAndWait ();
             }
         } catch (Exception e) {
             e.printStackTrace ();
@@ -47,10 +44,10 @@ public class BookingClient implements BookingClientInterface {
     }
 
     @Override
-    public User logIn(String username, String password) {
-        User usr = null;
+    public Object logIn(String username, String password) {
+        Object usr = null;
         try {
-            usr = serverInterface.logIn ( username,password );
+            usr = serverInterface.logIn (username, password);
         } catch (RemoteException e) {
             e.printStackTrace ();
         }
@@ -58,8 +55,14 @@ public class BookingClient implements BookingClientInterface {
     }
 
     @Override
-    public ArrayList<Doctor> getDoctorList() throws RemoteException {
-        return serverInterface.getDoctorList();
+    public ArrayList<Doctor> getDoctorList() {
+        ArrayList<Doctor> doctorList = new ArrayList<> ();
+        try {
+            doctorList = serverInterface.getDoctorList ();
+        } catch (RemoteException e) {
+            e.printStackTrace ();
+        }
+        return doctorList;
     }
 }
 

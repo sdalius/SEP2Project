@@ -3,8 +3,6 @@ package Server;
 import Database.GetData;
 import Database.InsertInto;
 import Shared.Doctor;
-import Shared.Patient;
-import Shared.User;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -21,16 +19,16 @@ public class BookingServer implements ServerInterface{
     }
 
     @Override
-    public String createAccount(Patient patient) {
-        System.out.println ("[BookingServer] I've received a patient with the name of:" + patient.getFname ());
-        String msg = insertInto.addPatient ( patient );
+    public String createAccount(String fname, String lname, String username, String address,String birthdate, String phoneNo, String eMail,String password) {
+        System.out.println ("[BookingServer] I've received a patient with the name of:" + fname);
+        String msg = insertInto.addPatient ( fname, lname, username, address,birthdate, phoneNo, eMail,password );
         return msg;
     }
 
-    public User logIn(String username, String password)
+    public Object logIn(String username, String password)
     {
         System.out.println ("[BookingServer] User username is : " + username);
-        User usr = getData.getCustomerData ( username,password );
+        Object usr = getData.getCustomerData ( username,password );
         return usr;
     }
 

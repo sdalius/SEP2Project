@@ -37,6 +37,6 @@ public class CreateAccountController {
     }
 
     public void createAccount() {
-        createAccountViewModel.createAccount(new Patient (txtfname.getText(), txtlname.getText(), txtcpr.getText(), txtaddress.getText(), txtbirthdate.getText(), txtphone.getText(), txtemail.getText(), txtpassword.getText()));
+        createAccountViewModel.createAccount(txtfname.getText(), txtlname.getText(), txtcpr.getText(), txtaddress.getText(), txtbirthdate.getText(), txtphone.getText(), txtemail.getText(), txtpassword.getText());
     }
 }

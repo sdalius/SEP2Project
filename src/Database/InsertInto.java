@@ -11,14 +11,12 @@ public class InsertInto {
 
     public InsertInto() {
         this.dbobj = DatabaseAccessObject.getDatabaseObject ();
-        dbobj.setSearchPath ( "sep2" );
     }
 
-    public String addPatient(Patient patient) {
-        System.out.println (patient.getLname ());
+    public String addPatient(String fname, String lname, String username, String address,String birthdate, String phoneNo, String eMail,String password) {
         try {
             statement = dbobj.getC ().createStatement ();
-            System.out.println (statement.executeUpdate ( "INSERT INTO \"sep2\".patient(username, password, usertype, firstname, lastname, address, birthdate,phonenumber,email) VALUES('" + patient.getCpr () + "','" + patient.getPassword () + "','Patient', '" + patient.getFname () + "','" + patient.getLname () + "','" + patient.getAddress () + "','" + patient.getBirthdate () + "','" + patient.getPhoneNo () + "','" + patient.getEmail () + "'" + ")" ));
+            System.out.println (statement.executeUpdate ( "INSERT INTO \"sep2\".patient(username, password, usertype, firstname, lastname, address, birthdate,phonenumber,email) VALUES('" + username+ "','" + password + "','Patient', '" + fname + "','" + lname + "','" + address + "','" + birthdate + "','" + phoneNo + "','" + eMail + "'" + ")" ));
             System.out.println ("Code has been executed");
             System.out.println ("Am i here?");
             statement.close ();

@@ -1,15 +1,13 @@
 package Server;
 
 import Shared.Doctor;
-import Shared.Patient;
-import Shared.User;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public interface ServerInterface extends Remote {
-    String createAccount(Patient patient) throws RemoteException;
-    User logIn(String username, String password) throws RemoteException;
+    String createAccount(String fname, String lname, String username, String address,String birthdate, String phoneNo, String eMail,String password) throws RemoteException;
+    Object logIn(String username, String password) throws RemoteException;
     ArrayList<Doctor> getDoctorList() throws RemoteException;
 }
