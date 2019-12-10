@@ -1,6 +1,7 @@
 package Model;
 
 import Server.ServerInterface;
+import Shared.Doctor;
 import Shared.Patient;
 import javafx.scene.control.Alert;
 import Shared.User;
@@ -9,6 +10,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
 
 public class BookingClient implements BookingClientInterface {
     private ServerInterface serverInterface;
@@ -54,4 +56,11 @@ public class BookingClient implements BookingClientInterface {
         }
         return usr;
     }
+
+    @Override
+    public ArrayList<Doctor> getDoctorList() {
+        return serverInterface.getDoctorList();
+    }
 }
+
+

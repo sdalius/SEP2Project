@@ -1,6 +1,7 @@
 package View;
 
 import View.CreateAccount.CreateAccountController;
+import View.DoctorList.DoctorListViewController;
 import View.Login.LoginController;
 import View.Patient.PatientViewController;
 import ViewModel.ViewModelFactory;
@@ -55,6 +56,25 @@ public class ViewHandler {
         CreateAccountController controller = loader.getController();
         controller.init(vmf.getCreateAccountViewModel (), this);
         mainStage.setTitle("Login View");
+
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
+    }
+
+    public void openDoctorListView() {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("DoctorList/DoctorListView.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DoctorListViewController controller = loader.getController();
+        controller.init(vmf.getDoctorListViewModel (), this);
+        mainStage.setTitle("Doctor list");
 
         Scene scene = new Scene(root);
         mainStage.setScene(scene);

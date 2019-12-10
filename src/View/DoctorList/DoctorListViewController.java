@@ -33,7 +33,7 @@ public class DoctorListViewController {
         OfficeNoCol.setCellValueFactory(new PropertyValueFactory<>("officenr"));
         PhoneNoCol.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("eMail"));
-        doctorTableView.setItems(doctorListViewModel.getDoctorList());
+        doctorTableView.setItems(doctorListViewModel.getDoctors());
     }
 
     public void onBackButton(){
