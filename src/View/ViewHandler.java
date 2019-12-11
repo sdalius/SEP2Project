@@ -1,6 +1,5 @@
 package View;
 
-import Shared.User;
 import View.CreateAccount.CreateAccountController;
 import View.DoctorList.DoctorListViewController;
 import View.Login.LoginController;
