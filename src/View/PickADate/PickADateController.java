@@ -2,36 +2,23 @@ package View.PickADate;
 
 import View.ViewHandler;
 import ViewModel.PickADate.PickADateViewModel;
-import com.sun.javafx.scene.control.skin.DatePickerContent;
-import com.sun.javafx.scene.control.skin.DatePickerSkin;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class PickADateController {
 
-    private PickADateViewModel pickadateviewmodel;
-    private ViewHandler viewHandler;
     @FXML
     ComboBox<String> comboBoxList;
     @FXML
-    Label lblStuff;
+    Label timeLabel;
     @FXML
-    DatePicker datapickAppointment;
+    Label dateLabel;
+    @FXML
+    DatePicker appointmentDatePicker;
 
     public void init(PickADateViewModel pickadateviewmodel, ViewHandler viewHandler) {
-        this.viewHandler = viewHandler;
-        this.pickadateviewmodel = pickadateviewmodel;
         comboBoxList.getItems().addAll(
                 "8:30",
                 "9:00",
@@ -51,9 +38,15 @@ public class PickADateController {
         comboBoxList.setPromptText("Select time");
     }
 
+    public void updateTimeLabel() {
+        timeLabel.setText("Selected time: " + comboBoxList.getSelectionModel().getSelectedItem());
+    }
 
-    public void changeLabel() {
-        lblStuff.setText("Selected time " + comboBoxList.getSelectionModel().getSelectedItem() +
-                " Selected date:" + datapickAppointment.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    public void updateDateLabel() {
+        dateLabel.setText("Selected date: " + appointmentDatePicker.getValue());
+    }
+
+    public void bookAppointment() {
+        return;
     }
 }
