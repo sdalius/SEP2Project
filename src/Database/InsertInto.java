@@ -17,18 +17,22 @@ public class InsertInto {
     public String addPatient(String fname, String lname, String username, String address,String birthdate, String phoneNo, String eMail,String password) {
         try {
             statement = dbobj.getC ().createStatement ();
-            System.out.println (statement.executeUpdate ( "INSERT INTO \"sep2\".patient(username, password, usertype, firstname, lastname, address, birthdate,phonenumber,email) VALUES('" + username+ "','" + password + "','Patient', '" + fname + "','" + lname + "','" + address + "','" + birthdate + "','" + phoneNo + "','" + eMail + "'" + ")" ));
-            System.out.println ("Code has been executed");
-            System.out.println ("Am i here?");
-            statement.close ();
-            return "Success!" ;
+            System.out.println(statement.executeUpdate ( "INSERT INTO \"sep2\".patient(username, password, usertype, firstname, lastname, address, birthdate,phonenumber,email) VALUES('" + username+ "','" + password + "','Patient', '" + fname + "','" + lname + "','" + address + "','" + birthdate + "','" + phoneNo + "','" + eMail + "'" + ")" ));
+            statement.close();
+            return "Success";
         } catch (SQLException e) {
             return e.getMessage();
         }
-
     }
 
-    public void addAppointment(LocalDate date, int doctorID, int patientID) {
-        
+    public String addAppointment(LocalDate date, int doctorID, int patientID) {
+        try {
+            statement = dbobj.getC ().createStatement ();
+            System.out.println(statement.executeUpdate ( "INSERT INTO \"sep2\".appointment(AppointmentDate, DoctorUID, PatientUID) VALUES('" + date + "','" + doctorID + "','" + patientID + "','"));
+            statement.close();
+            return "Success";
+        } catch (SQLException e) {
+            return e.getMessage();
+        }
     }
 }

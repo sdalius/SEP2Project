@@ -36,7 +36,7 @@ public class BookingClient implements BookingClientInterface {
                 alert.setTitle ("Account info");
                 alert.setHeaderText (null);
                 alert.setContentText ("Account has been created!");
-                alert.showAndWait ();
+                alert.showAndWait();
             }
         } catch (Exception e) {
             e.printStackTrace ();
