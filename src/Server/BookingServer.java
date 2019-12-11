@@ -6,6 +6,7 @@ import Shared.Doctor;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class BookingServer implements ServerInterface{
@@ -20,16 +21,17 @@ public class BookingServer implements ServerInterface{
 
     @Override
     public String createAccount(String fname, String lname, String username, String address,String birthdate, String phoneNo, String eMail,String password) {
-        System.out.println ("[BookingServer] I've received a patient with the name of:" + fname);
+        System.out.println ("[BookingServer] I've received a patient with the name of: " + fname);
         String msg = insertInto.addPatient ( fname, lname, username, address,birthdate, phoneNo, eMail,password );
         return msg;
     }
 
+    @Override
     public Object logIn(String username, String password)
     {
-        System.out.println ("[BookingServer] User username is : " + username);
-        Object usr = getData.getCustomerData ( username,password );
-        return usr;
+        System.out.println ("[BookingServer] Username is: " + username);
+        return getData.getCustomerData (username, password);
+
     }
 
     @Override
@@ -37,9 +39,9 @@ public class BookingServer implements ServerInterface{
         System.out.println("Getting doctor list");
         return getData.getAllDoctors();
     }
-/*
+
     @Override
-    public void bookAppointment() {
-        insertInto
-    }*/
+    public String bookAppointment(LocalDate date, int doctorID, int patientID) {
+        return insertInto.addAppointment(date, doctorID, patientID);
+    }
 }

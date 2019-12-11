@@ -3,7 +3,6 @@ package Model;
 import Server.ServerInterface;
 import Shared.Doctor;
 import javafx.scene.control.Alert;
-import Shared.User;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
