@@ -4,13 +4,14 @@ import Shared.Patient;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 public class InsertInto {
     private DatabaseAccessObject dbobj;
     private Statement statement;
 
     public InsertInto() {
-        this.dbobj = DatabaseAccessObject.getDatabaseObject ();
+        this.dbobj = DatabaseAccessObject.getDatabaseObject();
     }
 
     public String addPatient(String fname, String lname, String username, String address,String birthdate, String phoneNo, String eMail,String password) {
@@ -25,5 +26,9 @@ public class InsertInto {
             return e.getMessage();
         }
 
+    }
+
+    public void addAppointment(LocalDate date, int doctorID, int patientID) {
+        
     }
 }

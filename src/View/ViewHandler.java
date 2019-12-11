@@ -22,7 +22,7 @@ public class ViewHandler {
         mainStage = stage;
     }
     public void start() {
-        openPickADateView ();
+        openPickADateView();
     }
 
     public void openLoginView() {

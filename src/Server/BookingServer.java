@@ -37,4 +37,9 @@ public class BookingServer implements ServerInterface{
         System.out.println("Getting doctor list");
         return getData.getAllDoctors();
     }
+
+    @Override
+    public void bookAppointment() {
+        insertInto
+    }
 }
