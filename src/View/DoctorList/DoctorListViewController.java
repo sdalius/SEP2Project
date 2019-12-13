@@ -27,7 +27,7 @@ public class DoctorListViewController {
     private TableColumn<Doctor, String> eMailCol;
 
     private ViewHandler viewHandler;
-    private User usr;
+    private Object usr;
 
 
     public void init(DoctorListViewModel doctorListViewModel, ViewHandler viewHandler) {
@@ -41,21 +41,14 @@ public class DoctorListViewController {
     }
 
     public void onBackButton(){
-        viewHandler.openPatientView(usr);
+        //viewHandler.openPatientView(userID);
     }
 
-    public void setUsr(Object user)
-    {
-        if (user instanceof Patient)
-        {
-            usr = (Patient) user;
-        }
-        else if (user instanceof Doctor)
-        {
-            usr = (Doctor) user;
-        }
-    }
     public void bookanAppointment() {
-        System.out.println (doctorTableView.getSelectionModel().getSelectedItem ().getUserID ());
+        viewHandler.openPickADateView((((Patient) usr).getUserID ()),doctorTableView.getSelectionModel().getSelectedItem().getUserID());
+    }
+
+    public void setUsr(Object usr ) {
+        this.usr = usr;
     }
 }

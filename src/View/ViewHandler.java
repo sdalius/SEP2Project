@@ -102,7 +102,7 @@ public class ViewHandler {
         mainStage.show();
     }
 
-    public void openPickADateView() {
+    public void openPickADateView(int userID,int DoctorID) {
         FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("PickADate/PickADateView.fxml"));
@@ -114,6 +114,8 @@ public class ViewHandler {
         }
         PickADateController controller = loader.getController();
         controller.init(vmf.getPickADateViewModel (), this);
+        controller.setUserID(userID);
+        controller.setDoctorID(DoctorID);
         mainStage.setTitle("Booking Options");
 
         Scene scene = new Scene(root);

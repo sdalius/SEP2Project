@@ -10,14 +10,14 @@ import java.util.ArrayList;
 public class PatientViewModel {
 
     private BookingClientInterface bookingClient;
-    private Object user;
+    private int userID;
 
     public PatientViewModel(BookingClientInterface bookingClient) {
         this.bookingClient= bookingClient;
     }
 
-    public void setUser(Object usr)
+    public void setUserID(int userID)
     {
-        this.user = usr;
+        this.userID = userID;
     }
 }

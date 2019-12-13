@@ -13,19 +13,19 @@ public class BookingClient implements BookingClientInterface {
     private ServerInterface serverInterface;
 
     public BookingClient() throws RemoteException, NotBoundException {
-        Registry registry = LocateRegistry.getRegistry ("localhost", 1099);
-        serverInterface = (ServerInterface) registry.lookup ("BookingServer");
+        Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+        serverInterface = (ServerInterface) registry.lookup("BookingServer");
     }
 
     @Override
     public String createAccount(String fname, String lname, String username, String address, String birthdate, String phoneNo, String eMail, String password) {
         String errmsg = "";
-        System.out.println ("[BookingClient] I've received a patient with a name of:" + fname);
+        System.out.println("[BookingClient] I've received a patient with a name of:" + fname);
         try {
-            errmsg = serverInterface.createAccount (fname, lname, username, address,birthdate, phoneNo, eMail,password);
-            System.out.println ("[BookingClient] Sending object to the server Interface");
-        } catch (Exception e) {
-            e.printStackTrace ();
+            errmsg = serverInterface.createAccount(fname, lname, username, address, birthdate, phoneNo, eMail, password);
+            System.out.println("[BookingClient] Sending object to the server Interface");
+        } catch(Exception e) {
+            e.printStackTrace();
         }
         return errmsg;
     }
@@ -34,25 +34,25 @@ public class BookingClient implements BookingClientInterface {
     public Object logIn(String username, String password) {
         Object usr = null;
         try {
-            usr = serverInterface.logIn (username, password);
-        } catch (RemoteException e) {
-            e.printStackTrace ();
+            usr = serverInterface.logIn(username, password);
+        } catch(RemoteException e) {
+            e.printStackTrace();
         }
         return usr;
     }
 
     @Override
     public ArrayList<Doctor> getDoctorList() {
-        ArrayList<Doctor> doctorList = new ArrayList<> ();
+        ArrayList<Doctor> doctorList = new ArrayList<>();
         try {
-            doctorList = serverInterface.getDoctorList ();
-        } catch (RemoteException e) {
-            e.printStackTrace ();
+            doctorList = serverInterface.getDoctorList();
+        } catch(RemoteException e) {
+            e.printStackTrace();
         }
         return doctorList;
     }
-    public ArrayList<Appointment> getAppointmentListAccordingToDate(String date)
-    {
+
+    public ArrayList<Appointment> getAppointmentListAccordingToDate(String date) {
         ArrayList<Appointment> appointmentsAccordingToDate = new ArrayList<>();
         try {
             appointmentsAccordingToDate = serverInterface.getAppointmentsAccordingToDate(date);
@@ -60,6 +60,16 @@ public class BookingClient implements BookingClientInterface {
             e.printStackTrace();
         }
         return appointmentsAccordingToDate;
+    }
+
+    public String addAppointment(String date, int doctorID, int patientID, String appointmenttime) {
+        try {
+            String errmsg = serverInterface.addAppointment(date, doctorID, patientID, appointmenttime);
+            System.out.println("[BOOKING CLIENT] " + errmsg);
+            return "Success";
+        } catch(RemoteException e) {
+            return e.getMessage();
+        }
     }
 }
 

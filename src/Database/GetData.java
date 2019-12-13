@@ -69,7 +69,6 @@ public class GetData {
             }
             rs.close ();
             statement.close ();
-            databaseObject.getC ().close ();
         }
         catch (SQLException e)
         {
@@ -93,7 +92,6 @@ public class GetData {
             }
             rs.close ();
             statement.close ();
-            databaseObject.getC().close();
         } catch (SQLException e) {
             e.getMessage ();
         }
@@ -120,6 +118,8 @@ public class GetData {
                         appArr.add ( new Appointment ( appointmentdate, doctoruid, patientuid, appointmenttime) );
                     }
                 }
+                appSet.close ();
+                statement.close();
             } catch(SQLException e) {
                 e.printStackTrace();
             }

@@ -7,7 +7,6 @@ import Shared.Doctor;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class BookingServer implements ServerInterface{
@@ -42,12 +41,12 @@ public class BookingServer implements ServerInterface{
         return getData.getAllDoctors();
     }
 
-    @Override
-    public String bookAppointment(LocalDate date, int doctorID, int patientID) {
-        return insertInto.addAppointment(date, doctorID, patientID);
-    }
-
     public ArrayList<Appointment> getAppointmentsAccordingToDate(String date) {
         return getData.getAppointmentsAccordingToDate(date);
+    }
+
+    @Override
+    public String addAppointment(String date, int doctorID, int patientID, String appointmenttime) throws RemoteException {
+        return insertInto.addAppointment(date, doctorID, patientID,appointmenttime);
     }
 }

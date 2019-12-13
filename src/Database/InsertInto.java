@@ -25,10 +25,10 @@ public class InsertInto {
         }
     }
 
-    public String addAppointment(LocalDate date, int doctorID, int patientID) {
+    public String addAppointment(String date, int doctorID, int patientID,String appointmenttime) {
         try {
             statement = dbobj.getC().createStatement();
-            System.out.println(statement.executeUpdate ( "INSERT INTO \"sep2\".appointment(AppointmentDate, DoctorUID, PatientUID) VALUES('" + date + "','" + doctorID + "','" + patientID + "','"));
+            statement.executeUpdate ( "INSERT INTO \"sep2\".appointment(AppointmentDate, DoctorUID, PatientUID, appointmenttime) VALUES('" + date + "','" + doctorID + "','" + patientID + "','" + appointmenttime + "'" + ")");
             statement.close();
             return "Success";
         } catch (SQLException e) {

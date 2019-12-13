@@ -2,8 +2,10 @@ package ViewModel.PickADate;
 
 import Model.BookingClientInterface;
 import Shared.Appointment;
+import com.sun.security.ntlm.Server;
 
 import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PickADateViewModel {
@@ -13,15 +15,21 @@ public class PickADateViewModel {
         this.bookingClient= bookingClient;
     }
 
-    public ArrayList<Appointment> getAppointmentsAccordingToDate(String date)
-    {
-        ArrayList<Appointment> appointmentListAccordingToDate = null;
+    public ArrayList<Appointment> getAppointmentsAccordingToDate(String date) {
+        ArrayList<Appointment> appArr = new ArrayList<>();
         try {
-            appointmentListAccordingToDate = bookingClient.getAppointmentListAccordingToDate(date);
-        } catch(RemoteException e) {
-            e.printStackTrace();
+            appArr = bookingClient.getAppointmentListAccordingToDate(date);
+        } catch (RemoteException e) {
+            e.printStackTrace ();
         }
-        return appointmentListAccordingToDate;
+        return appArr;
     }
 
+    public String addAppointment(String date, int doctorID, int patientID, String appointmenttime) {
+        try {
+            return bookingClient.addAppointment(date, doctorID, patientID,appointmenttime);
+        } catch(RemoteException e) {
+           return e.getMessage();
+        }
+    }
 }
