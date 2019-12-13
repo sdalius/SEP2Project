@@ -2,6 +2,7 @@ package Server;
 
 import Database.GetData;
 import Database.InsertInto;
+import Shared.Appointment;
 import Shared.Doctor;
 
 import java.rmi.RemoteException;
@@ -22,6 +23,7 @@ public class BookingServer implements ServerInterface{
     public String createAccount(String fname, String lname, String username, String address,String birthdate, String phoneNo, String eMail,String password) {
         System.out.println ("[BookingServer] I've received a patient with the name of:" + fname);
         String msg = insertInto.addPatient ( fname, lname, username, address,birthdate, phoneNo, eMail,password );
+        System.out.println(msg);
         return msg;
     }
 
@@ -36,5 +38,10 @@ public class BookingServer implements ServerInterface{
     public ArrayList<Doctor> getDoctorList() {
         System.out.println("Getting doctor list");
         return getData.getAllDoctors();
+    }
+
+    public ArrayList<Appointment> getAppointmentsAccordingToDate(String date)
+    {
+        return getData.getAppointmentsAccordingToDate(date);
     }
 }

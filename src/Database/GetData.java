@@ -1,5 +1,6 @@
 package Database;
 
+import Shared.Appointment;
 import Shared.Doctor;
 import Shared.Patient;
 
@@ -98,5 +99,31 @@ public class GetData {
         }
         return doctorArr;
     }
+
+    public ArrayList<Appointment> getAppointmentsAccordingToDate(String date)
+    {
+        ArrayList<Appointment>appArr = new ArrayList<>();
+        try{
+                statement = databaseObject.getC().createStatement();
+                ResultSet appSet = statement.executeQuery("Select * from \"sep2\".appointment\n" +
+                        "where appointmentdate = '"+date+"'");
+                if(!appSet.isBeforeFirst ())
+                {
+                    return null;
+                }
+                else{
+                    while (appSet.next ()) {
+                        String appointmentdate = appSet.getString("appointmentdate");
+                        int doctoruid = appSet.getInt ( "doctoruid" );
+                        int patientuid = appSet.getInt ( "patientuid" );
+                        String appointmenttime = appSet.getString ( "appointmenttime" );
+                        appArr.add ( new Appointment ( appointmentdate, doctoruid, patientuid, appointmenttime) );
+                    }
+                }
+            } catch(SQLException e) {
+                e.printStackTrace();
+            }
+            return appArr;
+         }
 }
 

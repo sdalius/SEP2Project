@@ -1,9 +1,8 @@
 package Model;
 
 import Server.ServerInterface;
+import Shared.Appointment;
 import Shared.Doctor;
-import javafx.scene.control.Alert;
-import Shared.User;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -20,27 +19,16 @@ public class BookingClient implements BookingClientInterface {
     }
 
     @Override
-    public void createAccount(String fname, String lname, String username, String address,String birthdate, String phoneNo, String eMail,String password) {
+    public String createAccount(String fname, String lname, String username, String address, String birthdate, String phoneNo, String eMail, String password) {
+        String errmsg = "";
         System.out.println ("[BookingClient] I've received a patient with a name of:" + fname);
         try {
-            String errmsg = serverInterface.createAccount (fname, lname, username, address,birthdate, phoneNo, eMail,password);
+            errmsg = serverInterface.createAccount (fname, lname, username, address,birthdate, phoneNo, eMail,password);
             System.out.println ("[BookingClient] Sending object to the server Interface");
-            if (errmsg != "Success") {
-                Alert alert = new Alert (Alert.AlertType.INFORMATION);
-                alert.setTitle ("Account info");
-                alert.setHeaderText (null);
-                alert.setContentText (errmsg);
-                alert.showAndWait ();
-            } else {
-                Alert alert = new Alert (Alert.AlertType.ERROR);
-                alert.setTitle ("Account info");
-                alert.setHeaderText (null);
-                alert.setContentText ("Account has been created!");
-                alert.showAndWait ();
-            }
         } catch (Exception e) {
             e.printStackTrace ();
         }
+        return errmsg;
     }
 
     @Override
@@ -63,6 +51,16 @@ public class BookingClient implements BookingClientInterface {
             e.printStackTrace ();
         }
         return doctorList;
+    }
+    public ArrayList<Appointment> getAppointmentListAccordingToDate(String date)
+    {
+        ArrayList<Appointment> appointmentsAccordingToDate = new ArrayList<>();
+        try {
+            appointmentsAccordingToDate = serverInterface.getAppointmentsAccordingToDate(date);
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        }
+        return appointmentsAccordingToDate;
     }
 }
 
