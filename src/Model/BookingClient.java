@@ -3,7 +3,6 @@ package Model;
 import Server.ServerInterface;
 import Shared.Appointment;
 import Shared.Doctor;
-
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
