@@ -1,7 +1,9 @@
 package ViewModel;
 
 import Model.BookingClientInterface;
+import ViewModel.AppointmentList.AppointmentListViewModel;
 import ViewModel.CreateAccount.CreateAccountViewModel;
+import ViewModel.Doctor.DoctorViewModel;
 import ViewModel.DoctorList.DoctorListViewModel;
 import ViewModel.PatientView.PatientViewModel;
 import ViewModel.Login.LoginViewModel;
@@ -14,6 +16,8 @@ public class ViewModelFactory {
     private PatientViewModel patientViewModel;
     private DoctorListViewModel doctorListViewModel;
     private PickADateViewModel pickADateViewModel;
+    private DoctorViewModel doctorViewModel;
+    private AppointmentListViewModel appointmentListViewModel;
 
     public ViewModelFactory(BookingClientInterface bookingClientInterface) {
         loginViewModel = new LoginViewModel ( bookingClientInterface );
@@ -21,6 +25,8 @@ public class ViewModelFactory {
         patientViewModel = new PatientViewModel ( bookingClientInterface );
         doctorListViewModel = new DoctorListViewModel(bookingClientInterface);
         pickADateViewModel = new PickADateViewModel (bookingClientInterface);
+        doctorViewModel = new DoctorViewModel(bookingClientInterface);
+        appointmentListViewModel = new AppointmentListViewModel(bookingClientInterface);
     }
     public LoginViewModel getLoginViewModel() {
         return loginViewModel;
@@ -31,4 +37,6 @@ public class ViewModelFactory {
         return doctorListViewModel;
     }
     public PickADateViewModel getPickADateViewModel() { return pickADateViewModel;}
+    public DoctorViewModel getDoctorViewModel() { return doctorViewModel; }
+    public AppointmentListViewModel getAppointmentListViewModel() { return appointmentListViewModel; }
 }

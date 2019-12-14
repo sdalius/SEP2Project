@@ -1,6 +1,8 @@
 package View;
 
+import View.AppointmentList.AppointmentListViewController;
 import View.CreateAccount.CreateAccountController;
+import View.Doctor.DoctorViewController;
 import View.DoctorList.DoctorListViewController;
 import View.Login.LoginController;
 import View.Patient.PatientViewController;
@@ -113,8 +115,6 @@ public class ViewHandler {
             e.printStackTrace();
         }
         PickADateController controller = loader.getController();
-        vmf.getPickADateViewModel().setUserID(userID);
-        vmf.getPickADateViewModel().setDoctorID(DoctorID);
         controller.init(vmf.getPickADateViewModel (), this);
         mainStage.setTitle("Booking Options");
 
@@ -122,8 +122,41 @@ public class ViewHandler {
         mainStage.setScene(scene);
         mainStage.show();
     }
-    public void openDoctorView()
-    {
+    public void openDoctorView() {
+        FXMLLoader loader = new FXMLLoader();
 
+        loader.setLocation(getClass().getResource("Doctor/DoctorView.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DoctorViewController controller = loader.getController();
+        controller.init(vmf.getDoctorViewModel (), this);
+        mainStage.setTitle("Appointments");
+
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
+    }
+
+    public void openAppointmentListView() {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("AppointmentList/AppointmentListView.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        AppointmentListViewController controller = loader.getController();
+        controller.init(vmf.getAppointmentListViewModel (), this);
+        mainStage.setTitle("Appointment List");
+
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
     }
 }

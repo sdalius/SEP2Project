@@ -4,6 +4,7 @@ import Database.GetData;
 import Database.InsertInto;
 import Shared.Appointment;
 import Shared.Doctor;
+import Shared.Patient;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

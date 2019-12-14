@@ -3,7 +3,7 @@ package Shared;
 import java.io.Serializable;
 
 public class Appointment implements Serializable {
-    private String appointmentdate,appointmenttime;
+    private String appointmentdate,appointmenttime,fname,lname;
     private int doctoruid,patientuid;
 
     public Appointment(String appointmentdate, int doctoruid, int patientuid, String appointmenttime) {

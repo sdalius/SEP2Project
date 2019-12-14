@@ -31,7 +31,7 @@ public class PickADateController {
             ArrayList<Appointment> appArr = pickADateViewModel.getAppointmentsAccordingToDate(appointmentDatePicker.getValue().toString());
             if (appArr == null)
             {
-                System.out.println("We dont have anything booked at this date");
+                System.out.println("We dont have any appointments at this date");
                 reupdateTimes();
             }
             else{
@@ -92,7 +92,7 @@ public class PickADateController {
                         + "Time: " + comboBoxList.getSelectionModel().getSelectedItem());
                 alert.showAndWait();
                 if(alert.getResult() == ButtonType.OK) {
-                    selectDate();
+                    viewHandler.openPatientView();
                 }
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);

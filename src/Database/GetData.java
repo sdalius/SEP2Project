@@ -34,10 +34,11 @@ public class GetData {
                 {
                     id = rs.getInt ( "userid" );
                     usertype = rs.getString ( "usertype" );
+                    System.out.println("[GETDATA] + Usertype: " + usertype);
                 }
                 if (usertype.equals ("Patient"))
                 {
-                    ResultSet patient = statement.executeQuery ( "Select userid,usertype,firstname,lastname,address,birthdate,phonenumber,email from \"sep2\".patient\n" +
+                    ResultSet patient = statement.executeQuery ( "Select firstname,lastname,address,birthdate,phonenumber,email from \"sep2\".patient\n" +
                             "Where patient.userid = '"+id+"'");
                     while (patient.next ())
                     {
@@ -51,16 +52,16 @@ public class GetData {
                         return patientobj;
                     }
                 }
-                else if(usertype == "Doctor")
+                else if(usertype.equals("Doctor"))
                 {
-                    ResultSet doctor = statement.executeQuery ( "Select userid,usertype,firstname,lastname,officenumber,phonenumber,email from \"sep2\".doctor\n" +
-                            "Where doctor.userid LIKE '"+id+"'");
-                    while (rs.next())
+                    ResultSet doctor = statement.executeQuery ( "Select firstname,lastname,officenumber,phonenumber,email from \"sep2\".doctor\n" +
+                            "Where doctor.userid = '"+id+"'");
+                    while (doctor.next())
                     {
                         String firstname = doctor.getString ("firstname");
                         String lastname = doctor.getString ("lastname");
                         int officenumber = doctor.getInt ("officenumber");
-                        String phoneno = doctor.getString ("phoneNo");
+                        String phoneno = doctor.getString ("phonenumber");
                         String email = doctor.getString ("email");
                         Doctor doctorobj = new Doctor (id,firstname,lastname,phoneno,email,officenumber);
                         return doctorobj;

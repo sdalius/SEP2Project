@@ -2,6 +2,7 @@ package Server;
 
 import Shared.Appointment;
 import Shared.Doctor;
+import Shared.Patient;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
