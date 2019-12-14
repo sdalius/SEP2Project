@@ -3,14 +3,12 @@ package View.PickADate;
 import Shared.Appointment;
 import View.ViewHandler;
 import ViewModel.PickADate.PickADateViewModel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class PickADateController {
@@ -18,54 +16,37 @@ public class PickADateController {
     @FXML
     ComboBox<String> comboBoxList;
     @FXML
-    Label timeLabel;
-    @FXML
-    Label dateLabel;
-    @FXML
     DatePicker appointmentDatePicker;
-    private int userID;
-    private int doctorID;
-
     private PickADateViewModel pickADateViewModel;
     private ViewHandler viewHandler;
 
     public void init(PickADateViewModel pickadateviewmodel, ViewHandler viewHandler) {
         this.viewHandler = viewHandler;
         this.pickADateViewModel = pickadateviewmodel;
-        appointmentDatePicker.setValue(LocalDate.now());
         comboBoxList.setPromptText("Select time");
-        reupdateTimes();
-        appointmentDatePicker.setOnAction(event -> {
-            ArrayList<Appointment> appArr = pickadateviewmodel.getAppointmentsAccordingToDate(appointmentDatePicker.getValue().toString());
+    }
+
+    public void selectDate()
+    {
+            ArrayList<Appointment> appArr = pickADateViewModel.getAppointmentsAccordingToDate(appointmentDatePicker.getValue().toString());
             if (appArr == null)
             {
                 System.out.println("We dont have anything booked at this date");
                 reupdateTimes();
-                return;
             }
             else{
                 removeTimeFromList(appArr);
             }
             System.out.println("Date picked:" + appointmentDatePicker.getValue().toString());
-        });
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public void setDoctorID(int doctorID)
-    {
-        this.doctorID = doctorID;
     }
 
     public void reupdateTimes()
     {
         comboBoxList.getItems().clear();
         comboBoxList.getItems().addAll(
-                "8:30:00",
-                "9:00:00",
-                "9:30:00",
+                "08:30:00",
+                "09:00:00",
+                "09:30:00",
                 "10:00:00",
                 "10:30:00",
                 "11:00:00",
@@ -79,39 +60,51 @@ public class PickADateController {
                 "15:00:00"
         );
     }
-    public void updateTimeLabel() {
-        //timeLabel.setText("Selected time: " + comboBoxList.getSelectionModel().getSelectedItem());
-    }
-
-    public void updateDateLabel() {
-        //dateLabel.setText(appointmentDatePicker.get);
-        //dateLabel.setText("Selected date: " + appointmentDatePicker.getValue());
-    }
 
     public void removeTimeFromList(ArrayList<Appointment> appArr)
     {
+        reupdateTimes();
         for(int i = 0; i < appArr.size() ; i++)
         {
             comboBoxList.getItems().remove(appArr.get(i).getAppointmenttime());
+            System.out.println(appArr.get(i).getAppointmenttime());
         }
     }
 
-    public void changeLabel() {
-        timeLabel.setText("Selected time " + comboBoxList.getSelectionModel().getSelectedItem() +
-                " Selected date:" + appointmentDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        System.out.println(comboBoxList.getSelectionModel().getSelectedIndex());
-        comboBoxList.getItems().remove(0);
-    }
-
     public void bookAppointment() {
-        System.out.println("Doctor ID " + doctorID + "\n"
-        + "User ID " + userID + "\n"
-        +"Date: " + appointmentDatePicker.getValue() + "\n"
-        + "Time: " + comboBoxList.getSelectionModel().getSelectedItem());
+        if (appointmentDatePicker.getValue() == null || comboBoxList.getSelectionModel().isEmpty())
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Booking Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Select date and time!");
+            alert.showAndWait();
+        }
+        else {
+            String msg = pickADateViewModel.addAppointment(appointmentDatePicker.getValue().toString(), pickADateViewModel.getDoctorID(), pickADateViewModel.getUserID(), comboBoxList.getSelectionModel().getSelectedItem());
 
-        pickADateViewModel.addAppointment(appointmentDatePicker.getValue().toString(),doctorID,userID,comboBoxList.getSelectionModel().getSelectedItem());
+            if(msg.equals("Success")) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Booking Information");
+                alert.setHeaderText(null);
+                alert.setContentText("You've successfully made an appointment!" + "\n"
+                        + "Date: " + appointmentDatePicker.getValue().toString() + "\n"
+                        + "Time: " + comboBoxList.getSelectionModel().getSelectedItem());
+                alert.showAndWait();
+                if(alert.getResult() == ButtonType.OK) {
+                    selectDate();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Booking Information");
+                alert.setHeaderText(null);
+                alert.setContentText(msg);
+                alert.showAndWait();
+            }
+        }
     }
 
-    public void goBack(ActionEvent actionEvent) {
+    public void goBack() {
+        viewHandler.openPatientView();
     }
 }

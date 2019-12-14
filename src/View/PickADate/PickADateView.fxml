@@ -11,10 +11,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.PickADate.PickADateController">
    <children>
-      <DatePicker fx:id="appointmentDatePicker" layoutX="312.0" layoutY="86.0" onAction="#updateDateLabel" />
+      <DatePicker fx:id="appointmentDatePicker" layoutX="312.0" layoutY="86.0" onAction="#selectDate" />
       <Label layoutX="66.0" layoutY="90.0" text="Choose a date to book an appointment" />
-      <ComboBox fx:id="comboBoxList" layoutX="312.0" layoutY="148.0" onAction="#updateTimeLabel" prefHeight="25.0" prefWidth="174.0" />
-      <Button layoutX="66.0" layoutY="269.0" mnemonicParsing="false" onAction="#bookAppointment" prefHeight="48.0" prefWidth="165.0" text="Book appointment" />
+      <ComboBox fx:id="comboBoxList" layoutX="312.0" layoutY="148.0" prefHeight="25.0" prefWidth="174.0" />
+      <Button layoutX="76.0" layoutY="269.0" mnemonicParsing="false" onAction="#bookAppointment" prefHeight="48.0" prefWidth="165.0" text="Book appointment" />
       <Label layoutX="66.0" layoutY="152.0" text="Choose a time to book an appointment" />
       <Button layoutX="342.0" layoutY="269.0" mnemonicParsing="false" onAction="#goBack" prefHeight="48.0" prefWidth="165.0" text="Go Back" />
    </children>

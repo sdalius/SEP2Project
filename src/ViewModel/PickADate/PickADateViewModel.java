@@ -2,15 +2,16 @@ package ViewModel.PickADate;
 
 import Model.BookingClientInterface;
 import Shared.Appointment;
-import com.sun.security.ntlm.Server;
 
 import java.rmi.RemoteException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PickADateViewModel {
 
     private BookingClientInterface bookingClient;
+    private int userID;
+    private int doctorID;
+
     public PickADateViewModel(BookingClientInterface bookingClient) {
         this.bookingClient= bookingClient;
     }
@@ -31,5 +32,21 @@ public class PickADateViewModel {
         } catch(RemoteException e) {
            return e.getMessage();
         }
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public void setDoctorID(int doctorID) {
+        this.doctorID = doctorID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public int getDoctorID() {
+        return doctorID;
     }
 }

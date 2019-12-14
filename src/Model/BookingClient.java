@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class BookingClient implements BookingClientInterface {
     private ServerInterface serverInterface;
+    private Object usr;
 
     public BookingClient() throws RemoteException, NotBoundException {
         Registry registry = LocateRegistry.getRegistry("localhost", 1099);
@@ -19,25 +20,27 @@ public class BookingClient implements BookingClientInterface {
 
     @Override
     public String createAccount(String fname, String lname, String username, String address, String birthdate, String phoneNo, String eMail, String password) {
-        String errmsg = "";
         System.out.println("[BookingClient] I've received a patient with a name of:" + fname);
         try {
-            errmsg = serverInterface.createAccount(fname, lname, username, address, birthdate, phoneNo, eMail, password);
+            serverInterface.createAccount(fname, lname, username, address, birthdate, phoneNo, eMail, password);
             System.out.println("[BookingClient] Sending object to the server Interface");
+            return "Success";
         } catch(Exception e) {
-            e.printStackTrace();
+            return e.getMessage();
         }
-        return errmsg;
     }
 
     @Override
     public Object logIn(String username, String password) {
-        Object usr = null;
         try {
             usr = serverInterface.logIn(username, password);
+            return usr;
         } catch(RemoteException e) {
-            e.printStackTrace();
+            return null;
         }
+    }
+
+    public Object getUsr() {
         return usr;
     }
 
@@ -64,8 +67,7 @@ public class BookingClient implements BookingClientInterface {
 
     public String addAppointment(String date, int doctorID, int patientID, String appointmenttime) {
         try {
-            String errmsg = serverInterface.addAppointment(date, doctorID, patientID, appointmenttime);
-            System.out.println("[BOOKING CLIENT] " + errmsg);
+            serverInterface.addAppointment(date, doctorID, patientID, appointmenttime);
             return "Success";
         } catch(RemoteException e) {
             return e.getMessage();

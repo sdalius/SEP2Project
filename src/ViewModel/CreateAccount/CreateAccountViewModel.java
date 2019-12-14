@@ -1,7 +1,6 @@
 package ViewModel.CreateAccount;
 
 import Model.BookingClientInterface;
-import View.ViewHandler;
 
 import java.rmi.RemoteException;
 
@@ -22,9 +21,5 @@ public class CreateAccountViewModel {
             e.printStackTrace ();
         }
         return errmsg;
-    }
-    public void goBackToMain(ViewHandler vh)
-    {
-        vh.openLoginView ();
     }
 }

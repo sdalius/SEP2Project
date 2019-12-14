@@ -1,7 +1,6 @@
 package ViewModel.Login;
 
 import Model.BookingClientInterface;
-import Shared.User;
 
 import java.rmi.RemoteException;
 

@@ -1,10 +1,7 @@
 package Database;
-import Shared.Doctor;
-import Shared.Patient;
 
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 
 public class InsertInto {
     private DatabaseAccessObject dbobj;

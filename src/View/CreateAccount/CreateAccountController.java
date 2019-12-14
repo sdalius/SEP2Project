@@ -1,6 +1,5 @@
 package View.CreateAccount;
 
-import Shared.Patient;
 import View.ViewHandler;
 import ViewModel.CreateAccount.CreateAccountViewModel;
 import javafx.fxml.FXML;
@@ -34,7 +33,7 @@ public class CreateAccountController {
         }
 
     public void goBackToMain() {
-        createAccountViewModel.goBackToMain(viewHandler);
+        viewHandler.openLoginView();
     }
 
     public void createAccount() {

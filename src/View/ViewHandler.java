@@ -63,7 +63,7 @@ public class ViewHandler {
         mainStage.show();
     }
 
-    public void openDoctorListView(Object usr) {
+    public void openDoctorListView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("DoctorList/DoctorListView.fxml"));
         Parent root = null;
@@ -73,8 +73,8 @@ public class ViewHandler {
             e.printStackTrace();
         }
         DoctorListViewController controller = loader.getController();
+        vmf.getDoctorListViewModel().setPatient();
         controller.init(vmf.getDoctorListViewModel (), this);
-        controller.setUsr(usr);
         mainStage.setTitle("Doctor list");
 
         Scene scene = new Scene(root);
@@ -82,7 +82,7 @@ public class ViewHandler {
         mainStage.show();
     }
 
-    public void openPatientView(Object usr) {
+    public void openPatientView() {
         FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("Patient/PatientView.fxml"));
@@ -93,8 +93,8 @@ public class ViewHandler {
             e.printStackTrace();
         }
         PatientViewController controller = loader.getController();
+        vmf.getPatientViewModel().setPatient();
         controller.init(vmf.getPatientViewModel (), this);
-        controller.setUsr(usr);
         mainStage.setTitle("Patient View");
 
         Scene scene = new Scene(root);
@@ -113,9 +113,9 @@ public class ViewHandler {
             e.printStackTrace();
         }
         PickADateController controller = loader.getController();
+        vmf.getPickADateViewModel().setUserID(userID);
+        vmf.getPickADateViewModel().setDoctorID(DoctorID);
         controller.init(vmf.getPickADateViewModel (), this);
-        controller.setUserID(userID);
-        controller.setDoctorID(DoctorID);
         mainStage.setTitle("Booking Options");
 
         Scene scene = new Scene(root);

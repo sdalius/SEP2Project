@@ -1,23 +1,29 @@
 package ViewModel.PatientView;
 
 import Model.BookingClientInterface;
-import Shared.Appointment;
 import Shared.Patient;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 public class PatientViewModel {
 
     private BookingClientInterface bookingClient;
-    private int userID;
+    private Patient user;
 
     public PatientViewModel(BookingClientInterface bookingClient) {
         this.bookingClient= bookingClient;
     }
 
-    public void setUserID(int userID)
+    public void setPatient()
     {
-        this.userID = userID;
+        try {
+            this.user = (Patient) bookingClient.getUsr();
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Patient getUser() {
+        return user;
     }
 }

@@ -1,8 +1,5 @@
 package View.Patient;
 
-import Shared.Doctor;
-import Shared.Patient;
-import Shared.User;
 import View.ViewHandler;
 import ViewModel.PatientView.PatientViewModel;
 import javafx.fxml.FXML;
@@ -22,27 +19,14 @@ public class PatientViewController {
 
     private PatientViewModel patientViewModel;
     private ViewHandler viewHandler;
-    private User usr;
 
     public void init(PatientViewModel patientViewModel, ViewHandler viewHandler) {
         this.patientViewModel = patientViewModel;
         this.viewHandler = viewHandler;
+        lblName.setText(patientViewModel.getUser().getFname());
     }
 
     public void openDoctorListView() {
-        viewHandler.openDoctorListView (usr);
-    }
-    public void setUsr(Object user)
-    {
-        if (user instanceof Patient)
-        {
-            usr = (Patient) user;
-            lblName.setText (((Patient) user).getFname ());
-        }
-        else if (user instanceof Doctor)
-        {
-            usr = (Doctor) user;
-            lblName.setText (((Doctor) user).getFname ());
-        }
+        viewHandler.openDoctorListView ();
     }
 }
