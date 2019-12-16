@@ -3,7 +3,6 @@ package View.EditAppointment;
 import Shared.Appointment;
 import View.ViewHandler;
 import ViewModel.EditAppointment.EditAppointmentViewModel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -88,6 +87,7 @@ public class EditAppointmentViewController {
     }
 
     public void changeAppointment() {
+        System.out.println("Calling a method: Update Appointment");
         editAppointmentViewModel.updateAppointment(editAppointmentViewModel.getAppointment().getAppointmentdate(),editAppointmentViewModel.getAppointment().getAppointmenttime(),doctorAppointmentDatePicker.getValue().toString(),timeComboBox.getSelectionModel().getSelectedItem().toString());
     }
 }

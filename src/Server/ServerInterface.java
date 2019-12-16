@@ -17,5 +17,5 @@ public interface ServerInterface extends Remote {
     String addAppointment(String date, int doctorID, int patientID, String appointmenttime) throws RemoteException;
     Patient getPatientByID(int id) throws RemoteException;
     void deleteAppointment(String date, String time) throws RemoteException;
-    void updateAppointment(String olddate, String oldappointmenttime ,String newdate, String newappointmenttime) throws RemoteException;
+    String updateAppointment(String olddate, String oldappointmenttime ,String newdate, String newappointmenttime) throws RemoteException;
 }

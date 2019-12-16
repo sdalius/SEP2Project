@@ -54,7 +54,7 @@ public class BookingServer implements ServerInterface{
     }
 
     @Override
-    public String addAppointment(String date, int doctorID, int patientID, String appointmenttime) throws RemoteException {
+    public String addAppointment(String date, int doctorID, int patientID, String appointmenttime) {
         return insertInto.addAppointment(date, doctorID, patientID,appointmenttime);
     }
 
@@ -69,8 +69,8 @@ public class BookingServer implements ServerInterface{
     }
 
     @Override
-    public void updateAppointment(String olddate, String oldappointmenttime, String newdate, String newappointmenttime) {
-        insertInto.updateAppointment(olddate,oldappointmenttime,newdate,newappointmenttime);
+    public String updateAppointment(String olddate, String oldappointmenttime, String newdate, String newappointmenttime) {
+        return insertInto.updateAppointment(olddate,oldappointmenttime,newdate,newappointmenttime);
     }
 
 

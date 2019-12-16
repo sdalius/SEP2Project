@@ -1,11 +1,7 @@
 package Database;
 
-import Shared.Patient;
-
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
 
 public class DeleteData {
     private Statement statement;

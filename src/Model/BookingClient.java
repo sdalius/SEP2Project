@@ -95,18 +95,19 @@ public class BookingClient implements BookingClientInterface {
         }
     }
 
-    public void deleteAppointment(String date, String time)
+    public String deleteAppointment(String date, String time)
     {
         try {
             serverInterface.deleteAppointment(date,time);
         } catch(RemoteException e) {
             e.printStackTrace();
         }
+        return date;
     }
 
     @Override
-    public void updateAppointment(String olddate, String oldappointmenttime, String newdate, String newappointmenttime) throws RemoteException {
-        serverInterface.updateAppointment(olddate,oldappointmenttime,newdate,newappointmenttime);
+    public String updateAppointment(String olddate, String oldappointmenttime, String newdate, String newappointmenttime) throws RemoteException {
+        return serverInterface.updateAppointment(olddate,oldappointmenttime,newdate,newappointmenttime);
     }
 }
 

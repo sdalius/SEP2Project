@@ -43,12 +43,12 @@ public class AppointmentListViewModel {
         return doctor;
     }
 
-    public void deleteAppointment(String date,String time)
+    public String deleteAppointment(String date,String time)
     {
         try {
-            bookingClient.deleteAppointment(date,time);
+            return bookingClient.deleteAppointment(date,time);
         } catch(RemoteException e) {
-            e.printStackTrace();
+            return e.getMessage();
         }
     }
 

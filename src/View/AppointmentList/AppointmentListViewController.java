@@ -1,22 +1,15 @@
 package View.AppointmentList;
 
 import Shared.Appointment;
-import Shared.Patient;
 import View.ViewHandler;
 import ViewModel.AppointmentList.AppointmentListViewModel;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import java.rmi.RemoteException;
 
 public class AppointmentListViewController {
 

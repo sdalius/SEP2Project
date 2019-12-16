@@ -33,15 +33,16 @@ public class InsertInto {
         }
     }
 
-    public void updateAppointment(String olddate, String oldappointmenttime ,String newdate, String newappointmenttime)
+    public String updateAppointment(String olddate, String oldappointmenttime ,String newdate, String newappointmenttime)
     {
         try {
             statement = dbobj.getC().createStatement();
             statement.executeUpdate ( "UPDATE \"sep2\".appointment SET appointmentdate = '"+newdate+"' , appointmenttime = '"+newappointmenttime+"' " +
-                            "WHERE appointmentdate = '"+olddate+"' AND appointmenttime = '"+oldappointmenttime+"" );
+                            "WHERE appointmentdate = '"+olddate+"' AND appointmenttime = '"+oldappointmenttime+"'" );
             statement.close();
+            return "Success";
         } catch (SQLException e) {
-            e.getMessage();
+           return e.getMessage();
         }
     }
 }

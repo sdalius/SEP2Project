@@ -14,22 +14,6 @@ public class EditAppointmentViewModel {
         this.clientInterface = clientInterface;
     }
 
-    public void deleteAppointment(String date, String time) {
-        try {
-            clientInterface.deleteAppointment(date, time);
-        } catch(RemoteException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public String addAppointment(String date, int doctorID, int patientID, String appointmenttime) {
-        try {
-            return clientInterface.addAppointment(date, doctorID, patientID, appointmenttime);
-        } catch(RemoteException e) {
-            return e.getMessage();
-        }
-    }
-
     public void setAppointment(Appointment appointment) {
         this.appointment = appointment;
     }

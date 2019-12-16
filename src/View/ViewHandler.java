@@ -9,7 +9,6 @@ import View.EditAppointment.EditAppointmentViewController;
 import View.Login.LoginController;
 import View.Patient.PatientViewController;
 import View.PickADate.PickADateController;
-import ViewModel.EditAppointment.EditAppointmentViewModel;
 import ViewModel.ViewModelFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
