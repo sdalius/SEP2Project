@@ -67,12 +67,40 @@ public class BookingClient implements BookingClientInterface {
         return appointmentsAccordingToDate;
     }
 
+    public ArrayList<Appointment> getAppointmentListAccordingToDateAndDoctorID(String date,int doctorID) {
+        ArrayList<Appointment> appointmentsAccordingToDate = new ArrayList<>();
+        try {
+            appointmentsAccordingToDate = serverInterface.getAppointmentsAccordingToDateAndDoctorID(date,doctorID);
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        }
+        return appointmentsAccordingToDate;
+    }
+
     public String addAppointment(String date, int doctorID, int patientID, String appointmenttime) {
         try {
             serverInterface.addAppointment(date, doctorID, patientID, appointmenttime);
             return "Success";
         } catch(RemoteException e) {
             return e.getMessage();
+        }
+    }
+
+    public Patient getPatientByID(int id)
+    {
+        try {
+            return serverInterface.getPatientByID(id);
+        } catch(RemoteException e) {
+           return null;
+        }
+    }
+
+    public void deleteAppointment(String date, String time)
+    {
+        try {
+            serverInterface.deleteAppointment(date,time);
+        } catch(RemoteException e) {
+            e.printStackTrace();
         }
     }
 }

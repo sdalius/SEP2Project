@@ -8,11 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class GetData {
     private Statement statement;
     private DatabaseAccessObject databaseObject;
+    HashMap<Integer, Patient> patients = new HashMap<>();
 
     public GetData() {
         this.databaseObject = DatabaseAccessObject.getDatabaseObject ();
@@ -112,11 +114,7 @@ public class GetData {
                 }
                 else{
                     while (appSet.next ()) {
-                        String appointmentdate = appSet.getString("appointmentdate");
-                        int doctoruid = appSet.getInt ( "doctoruid" );
-                        int patientuid = appSet.getInt ( "patientuid" );
-                        String appointmenttime = appSet.getString ( "appointmenttime" );
-                        appArr.add ( new Appointment ( appointmentdate, doctoruid, patientuid, appointmenttime) );
+                        appArr.add ( new Appointment ( appSet.getString ("appointmentdate"), appSet.getInt ("doctoruid"), appSet.getInt ("patientuid"), appSet.getString("appointmenttime")) );
                     }
                 }
                 appSet.close ();
@@ -126,5 +124,56 @@ public class GetData {
             }
             return appArr;
          }
+
+    public ArrayList<Appointment> getAppointmentsAccordingToDateAndDoctorID(String date,int doctorID)
+    {
+        ArrayList<Appointment>appArr = new ArrayList<>();
+        appArr.clear();
+        try{
+            statement = databaseObject.getC().createStatement();
+            ResultSet appSet = statement.executeQuery("Select * from \"sep2\".appointment\n" +
+                    "where appointmentdate = '"+date+"' AND doctoruid = '"+doctorID+"'");
+            if(!appSet.isBeforeFirst ())
+            {
+                return null;
+            }
+            else{
+                while (appSet.next ()) {
+                    appArr.add ( new Appointment ( appSet.getString ("appointmentdate"), appSet.getInt ("doctoruid"), appSet.getInt ("patientuid"), appSet.getString("appointmenttime")) );
+                }
+            }
+            appSet.close ();
+            statement.close();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return appArr;
+    }
+
+    public Patient getPatientByID(int id) {
+        Patient patientfromhash = patients.get(id);
+        if(patientfromhash == null) {
+            try {
+                statement = databaseObject.getC().createStatement();
+                ResultSet patient = statement.executeQuery("Select firstname,lastname,address,birthdate,phonenumber,email from \"sep2\".patient\n" +
+                        "Where patient.userid = '" + id + "'");
+                while(patient.next()) {
+                    System.out.println("Patient ID: " + patient.getString("firstname"));
+                    patientfromhash = new Patient(id, patient.getString("firstname"),
+                                    patient.getString("lastname"),
+                            patient.getString("address"),
+                            patient.getString("birthdate"),
+                            patient.getString("phonenumber"),
+                            patient.getString("email"));
+                }
+                patients.put(id, patientfromhash);
+                patient.close();
+                statement.close();
+            } catch(SQLException e) {
+                return null;
+            }
+        }
+        return patientfromhash;
+    }
 }
 

@@ -15,4 +15,7 @@ public interface BookingClientInterface extends Remote {
     ArrayList<Appointment> getAppointmentListAccordingToDate(String date) throws RemoteException;
     String addAppointment(String date, int doctorID, int patientID, String appointmenttime) throws RemoteException;
     Object getUsr() throws RemoteException;
+    ArrayList<Appointment> getAppointmentListAccordingToDateAndDoctorID(String date,int doctorID) throws RemoteException;
+    Patient getPatientByID(int id) throws RemoteException;
+    void deleteAppointment(String date, String time) throws RemoteException;
 }

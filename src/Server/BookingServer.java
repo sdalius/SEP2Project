@@ -1,5 +1,6 @@
 package Server;
 
+import Database.DeleteData;
 import Database.GetData;
 import Database.InsertInto;
 import Shared.Appointment;
@@ -14,10 +15,12 @@ public class BookingServer implements ServerInterface{
 
     private InsertInto insertInto;
     private GetData getData;
+    private DeleteData deleteData;
     public BookingServer() throws RemoteException {
         UnicastRemoteObject.exportObject(this,0);
         insertInto = new InsertInto ();
         getData = new GetData ();
+        deleteData = new DeleteData();
     }
 
     @Override
@@ -46,8 +49,22 @@ public class BookingServer implements ServerInterface{
         return getData.getAppointmentsAccordingToDate(date);
     }
 
+    public ArrayList<Appointment> getAppointmentsAccordingToDateAndDoctorID(String date,int doctorID) {
+        return getData.getAppointmentsAccordingToDateAndDoctorID(date,doctorID);
+    }
+
     @Override
     public String addAppointment(String date, int doctorID, int patientID, String appointmenttime) throws RemoteException {
         return insertInto.addAppointment(date, doctorID, patientID,appointmenttime);
+    }
+
+    public Patient getPatientByID(int id)
+    {
+        return getData.getPatientByID(id);
+    }
+
+    public void deleteAppointment(String date, String time)
+    {
+        deleteData.deleteAppointment(date,time);
     }
 }

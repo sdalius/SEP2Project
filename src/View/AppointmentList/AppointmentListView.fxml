@@ -51,8 +51,8 @@
       <TableView fx:id="appointmentTableView" layoutX="25.0" layoutY="208.0" prefHeight="238.0" prefWidth="632.0">
         <columns>
             <TableColumn fx:id="dateCol" prefWidth="129.0" text="Date" />
-          <TableColumn fx:id="doctoruidCol" prefWidth="172.0" text="Doctor User ID" />
-          <TableColumn fx:id="patientuidCol" prefWidth="153.0" text="Patient User ID" />
+          <TableColumn fx:id="patientfirstnameCol" prefWidth="172.0" text="Patient Name" />
+          <TableColumn fx:id="patientlastnameCol" prefWidth="153.0" text="Patient Surname" />
             <TableColumn fx:id="timeCol" prefWidth="177.0" text="Time" />
         </columns>
       </TableView>
@@ -63,5 +63,6 @@
       </ImageView>
       <DatePicker fx:id="appDatePicker" layoutX="234.0" layoutY="140.0" onAction="#dateselected" />
       <Label layoutX="26.0" layoutY="144.0" text="Select a date to view appointments" />
+      <Button fx:id="btnCancelAppointment" layoutX="564.0" layoutY="464.0" mnemonicParsing="false" onAction="#cancelAppointment" prefHeight="25.0" prefWidth="77.0" text="Cancel" />
     </children>
 </Pane>

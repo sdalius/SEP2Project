@@ -13,5 +13,8 @@ public interface ServerInterface extends Remote {
     Object logIn(String username, String password) throws RemoteException;
     ArrayList<Doctor> getDoctorList() throws RemoteException;
     ArrayList<Appointment> getAppointmentsAccordingToDate(String date) throws RemoteException;
+    ArrayList<Appointment> getAppointmentsAccordingToDateAndDoctorID(String date,int doctorID) throws RemoteException;
     String addAppointment(String date, int doctorID, int patientID, String appointmenttime) throws RemoteException;
+    Patient getPatientByID(int id) throws RemoteException;
+    void deleteAppointment(String date, String time) throws RemoteException;
 }
