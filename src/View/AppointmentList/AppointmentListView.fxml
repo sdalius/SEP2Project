@@ -47,7 +47,7 @@
             </image>
         </ImageView>
         <AnchorPane layoutX="334.0" layoutY="78.0" />
-        <Button layoutX="25.0" layoutY="464.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="84.0" text="Back" />
+        <Button layoutX="527.0" layoutY="470.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="38.0" prefWidth="130.0" text="Go Back" />
       <TableView fx:id="appointmentTableView" layoutX="25.0" layoutY="208.0" prefHeight="238.0" prefWidth="632.0">
         <columns>
             <TableColumn fx:id="dateCol" prefWidth="129.0" text="Date" />
@@ -63,6 +63,7 @@
       </ImageView>
       <DatePicker fx:id="appDatePicker" layoutX="234.0" layoutY="140.0" onAction="#dateselected" />
       <Label layoutX="26.0" layoutY="144.0" text="Select a date to view appointments" />
-      <Button fx:id="btnCancelAppointment" layoutX="564.0" layoutY="464.0" mnemonicParsing="false" onAction="#cancelAppointment" prefHeight="25.0" prefWidth="77.0" text="Cancel" />
+      <Button fx:id="btnCancelAppointment" layoutX="25.0" layoutY="470.0" mnemonicParsing="false" onAction="#cancelAppointment" prefHeight="38.0" prefWidth="130.0" text="Cancel Appointment" />
+      <Button layoutX="269.0" layoutY="470.0" mnemonicParsing="false" onAction="#changeAppointment" prefHeight="38.0" prefWidth="130.0" text="Change Appointment" />
     </children>
 </Pane>

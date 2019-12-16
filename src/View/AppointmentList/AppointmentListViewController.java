@@ -69,4 +69,12 @@ public class AppointmentListViewController {
         appointmentListViewModel.deleteAppointment(date,time);
         System.out.println("Appointment was canceled and deleted.");
     }
+
+    public void changeAppointment() {
+        String time = appointmentTableView.getSelectionModel().getSelectedItem().getAppointmenttime();
+        String date = appointmentTableView.getSelectionModel().getSelectedItem().getAppointmentdate();
+        int doctoruid = appointmentTableView.getSelectionModel().getSelectedItem().getDoctoruid();
+        int patientuid = appointmentTableView.getSelectionModel().getSelectedItem().getPatientuid();
+        viewHandler.openEditAppointmentView(new Appointment(date,doctoruid,patientuid,time));
+    }
 }

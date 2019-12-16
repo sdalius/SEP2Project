@@ -67,4 +67,11 @@ public class BookingServer implements ServerInterface{
     {
         deleteData.deleteAppointment(date,time);
     }
+
+    @Override
+    public void updateAppointment(String olddate, String oldappointmenttime, String newdate, String newappointmenttime) {
+        insertInto.updateAppointment(olddate,oldappointmenttime,newdate,newappointmenttime);
+    }
+
+
 }

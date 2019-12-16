@@ -32,4 +32,16 @@ public class InsertInto {
             return e.getMessage();
         }
     }
+
+    public void updateAppointment(String olddate, String oldappointmenttime ,String newdate, String newappointmenttime)
+    {
+        try {
+            statement = dbobj.getC().createStatement();
+            statement.executeUpdate ( "UPDATE \"sep2\".appointment SET appointmentdate = '"+newdate+"' , appointmenttime = '"+newappointmenttime+"' " +
+                            "WHERE appointmentdate = '"+olddate+"' AND appointmenttime = '"+oldappointmenttime+"" );
+            statement.close();
+        } catch (SQLException e) {
+            e.getMessage();
+        }
+    }
 }

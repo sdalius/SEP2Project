@@ -1,12 +1,15 @@
 package View;
 
+import Shared.Appointment;
 import View.AppointmentList.AppointmentListViewController;
 import View.CreateAccount.CreateAccountController;
 import View.Doctor.DoctorViewController;
 import View.DoctorList.DoctorListViewController;
+import View.EditAppointment.EditAppointmentViewController;
 import View.Login.LoginController;
 import View.Patient.PatientViewController;
 import View.PickADate.PickADateController;
+import ViewModel.EditAppointment.EditAppointmentViewModel;
 import ViewModel.ViewModelFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -154,6 +157,26 @@ public class ViewHandler {
         AppointmentListViewController controller = loader.getController();
         controller.init(vmf.getAppointmentListViewModel (), this);
         mainStage.setTitle("Appointment List");
+
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
+    }
+
+    public void openEditAppointmentView(Appointment appointment) {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("EditAppointment/EditAppointmentView.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        EditAppointmentViewController controller = loader.getController();
+        vmf.getEditAppointmentViewModel().setAppointment(appointment);
+        controller.init(vmf.getEditAppointmentViewModel (), this);
+        mainStage.setTitle("Edit Appointment");
 
         Scene scene = new Scene(root);
         mainStage.setScene(scene);

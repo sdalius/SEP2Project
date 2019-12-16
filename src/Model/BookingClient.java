@@ -103,6 +103,11 @@ public class BookingClient implements BookingClientInterface {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void updateAppointment(String olddate, String oldappointmenttime, String newdate, String newappointmenttime) throws RemoteException {
+        serverInterface.updateAppointment(olddate,oldappointmenttime,newdate,newappointmenttime);
+    }
 }
 
 
