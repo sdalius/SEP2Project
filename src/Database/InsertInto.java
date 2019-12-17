@@ -14,7 +14,7 @@ public class InsertInto {
     public String addPatient(String fname, String lname, String username, String address,String birthdate, String phoneNo, String eMail,String password) {
         try {
             statement = dbobj.getC().createStatement();
-            System.out.println(statement.executeUpdate ( "INSERT INTO \"sep2\".patient(username, password, usertype, firstname, lastname, address, birthdate,phonenumber,email) VALUES('" + username+ "','" + password + "','Patient', '" + fname + "','" + lname + "','" + address + "','" + birthdate + "','" + phoneNo + "','" + eMail + "'" + ")" ));
+            statement.executeUpdate( "INSERT INTO \"sep2\".patient(username, password, usertype, firstname, lastname, address, birthdate,phonenumber,email) VALUES('" + username+ "','" + password + "','Patient', '" + fname + "','" + lname + "','" + address + "','" + birthdate + "','" + phoneNo + "','" + eMail + "'" + ")" );
             statement.close();
             return "Success";
         } catch (SQLException e) {
