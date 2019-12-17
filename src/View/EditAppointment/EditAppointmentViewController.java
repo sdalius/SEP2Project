@@ -1,9 +1,13 @@
 package View.EditAppointment;
 
 import Shared.Appointment;
+import Shared.Doctor;
+import Shared.Patient;
 import View.ViewHandler;
 import ViewModel.EditAppointment.EditAppointmentViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 
@@ -88,6 +92,24 @@ public class EditAppointmentViewController {
 
     public void changeAppointment() {
         System.out.println("Calling a method: Update Appointment");
-        editAppointmentViewModel.updateAppointment(editAppointmentViewModel.getAppointment().getAppointmentdate(),editAppointmentViewModel.getAppointment().getAppointmenttime(),doctorAppointmentDatePicker.getValue().toString(),timeComboBox.getSelectionModel().getSelectedItem().toString());
+        try{
+            editAppointmentViewModel.updateAppointment(editAppointmentViewModel.getAppointment().getAppointmentdate(),editAppointmentViewModel.getAppointment().getAppointmenttime(),doctorAppointmentDatePicker.getValue().toString(),timeComboBox.getSelectionModel().getSelectedItem().toString());
+            Alert alert = new Alert (Alert.AlertType.INFORMATION);
+            alert.setTitle ("Change Appointment");
+            alert.setHeaderText (null);
+            alert.setContentText ("Successfully changed appointment time");
+            alert.showAndWait ();
+            if (alert.getResult () == ButtonType.OK || alert.getResult() == ButtonType.CANCEL) {
+                viewHandler.openAppointmentListView();
+            }
+        }
+        catch (Exception e)
+        {
+            Alert alert = new Alert (Alert.AlertType.ERROR);
+            alert.setTitle ("Error");
+            alert.setHeaderText (null);
+            alert.setContentText (e.getMessage());
+            alert.showAndWait ();
+        }
     }
 }

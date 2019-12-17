@@ -127,6 +127,8 @@ public class GetData {
 
     public ArrayList<Appointment> getAppointmentsAccordingToDateAndDoctorID(String date,int doctorID)
     {
+        System.out.println("Date: " + date + "\n"
+        + "Doctor ID: "+ doctorID);
         ArrayList<Appointment>appArr = new ArrayList<>();
         appArr.clear();
         try{
@@ -140,6 +142,7 @@ public class GetData {
             else{
                 while (appSet.next ()) {
                     appArr.add ( new Appointment ( appSet.getString ("appointmentdate"), appSet.getInt ("doctoruid"), appSet.getInt ("patientuid"), appSet.getString("appointmenttime")) );
+                    System.out.println(appSet.getString("appointmentdate"));
                 }
             }
             appSet.close ();

@@ -118,6 +118,8 @@ public class ViewHandler {
         }
         PickADateController controller = loader.getController();
         controller.init(vmf.getPickADateViewModel (), this);
+        vmf.getPickADateViewModel().setUserID(userID);
+        vmf.getPickADateViewModel().setDoctorID(DoctorID);
         mainStage.setTitle("Booking Options");
 
         Scene scene = new Scene(root);

@@ -5,10 +5,7 @@ import View.ViewHandler;
 import ViewModel.AppointmentList.AppointmentListViewModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AppointmentListViewController {
@@ -35,6 +32,7 @@ public class AppointmentListViewController {
     public void init(AppointmentListViewModel appointmentListViewModel, ViewHandler viewHandler) {
         this.viewHandler = viewHandler;
         this.appointmentListViewModel = appointmentListViewModel;
+        appointmentTableView.setPlaceholder(new Label("Select date first!"));
     }
     
 
@@ -50,24 +48,45 @@ public class AppointmentListViewController {
         patientlastnameCol.setCellValueFactory(patientuid -> new SimpleStringProperty(appointmentListViewModel.getPatientByID(patientuid.getValue().getPatientuid()).getLname()));
         try {
             appointmentTableView.setItems(appointmentListViewModel.getAppointments(appDatePicker.getValue().toString(),appointmentListViewModel.getDoctor().getUserID()));
+            System.out.println(appointmentTableView.getItems().get(0).getAppointmenttime());
         } catch(NullPointerException e) {
-                System.out.println("No one is booked that day :)");
+            appointmentTableView.setPlaceholder(new Label("No appointments this day"));
         }
     }
 
     public void cancelAppointment() {
-        String time = appointmentTableView.getSelectionModel().getSelectedItem().getAppointmenttime();
-        String date = appointmentTableView.getSelectionModel().getSelectedItem().getAppointmentdate();
-        appointmentTableView.getItems().remove(appointmentTableView.getSelectionModel().getSelectedItem());
-        appointmentListViewModel.deleteAppointment(date,time);
-        System.out.println("Appointment was canceled and deleted.");
+        try{
+            String time = appointmentTableView.getSelectionModel().getSelectedItem().getAppointmenttime();
+            String date = appointmentTableView.getSelectionModel().getSelectedItem().getAppointmentdate();
+            appointmentTableView.getItems().remove(appointmentTableView.getSelectionModel().getSelectedItem());
+            appointmentListViewModel.deleteAppointment(date,time);
+            System.out.println("Appointment was canceled and deleted.");
+        }
+        catch(NullPointerException e)
+        {
+            Alert alert = new Alert (Alert.AlertType.ERROR);
+            alert.setTitle ("Error");
+            alert.setHeaderText (null);
+            alert.setContentText ("Select which appointment you want to cancel!");
+            alert.showAndWait ();
+        }
     }
 
     public void changeAppointment() {
-        String time = appointmentTableView.getSelectionModel().getSelectedItem().getAppointmenttime();
-        String date = appointmentTableView.getSelectionModel().getSelectedItem().getAppointmentdate();
-        int doctoruid = appointmentTableView.getSelectionModel().getSelectedItem().getDoctoruid();
-        int patientuid = appointmentTableView.getSelectionModel().getSelectedItem().getPatientuid();
-        viewHandler.openEditAppointmentView(new Appointment(date,doctoruid,patientuid,time));
+        try {
+            String time = appointmentTableView.getSelectionModel().getSelectedItem().getAppointmenttime();
+            String date = appointmentTableView.getSelectionModel().getSelectedItem().getAppointmentdate();
+            int doctoruid = appointmentTableView.getSelectionModel().getSelectedItem().getDoctoruid();
+            int patientuid = appointmentTableView.getSelectionModel().getSelectedItem().getPatientuid();
+            viewHandler.openEditAppointmentView(new Appointment(date, doctoruid, patientuid, time));
+        }
+        catch(NullPointerException e)
+        {
+            Alert alert = new Alert (Alert.AlertType.ERROR);
+            alert.setTitle ("Error");
+            alert.setHeaderText (null);
+            alert.setContentText ("Select date!");
+            alert.showAndWait ();
+        }
     }
 }
