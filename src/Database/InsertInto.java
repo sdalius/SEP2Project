@@ -16,10 +16,10 @@ public class InsertInto {
             statement = dbobj.getC().createStatement();
             statement.executeUpdate( "INSERT INTO \"sep2\".patient(username, password, usertype, firstname, lastname, address, birthdate,phonenumber,email) VALUES('" + username+ "','" + password + "','Patient', '" + fname + "','" + lname + "','" + address + "','" + birthdate + "','" + phoneNo + "','" + eMail + "'" + ")" );
             statement.close();
-            return "Success";
         } catch (SQLException e) {
             return e.getMessage();
         }
+        return "Success";
     }
 
     public String addAppointment(String date, int doctorID, int patientID,String appointmenttime) {

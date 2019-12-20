@@ -39,13 +39,13 @@ public class CreateAccountController {
     public void createAccount() {
         String errmsg = createAccountViewModel.createAccount(txtfname.getText(), txtlname.getText(), txtcpr.getText(), txtaddress.getText(), txtbirthdate.getText(), txtphone.getText(), txtemail.getText(), txtpassword.getText());
         if (errmsg != "Success") {
-            Alert alert = new Alert (Alert.AlertType.INFORMATION);
+            Alert alert = new Alert (Alert.AlertType.ERROR);
             alert.setTitle ("Account info");
             alert.setHeaderText (null);
             alert.setContentText (errmsg);
             alert.showAndWait ();
         } else {
-            Alert alert = new Alert (Alert.AlertType.ERROR);
+            Alert alert = new Alert (Alert.AlertType.INFORMATION);
             alert.setTitle ("Account info");
             alert.setHeaderText (null);
             alert.setContentText ("Account has been created!");
